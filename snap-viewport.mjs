@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer';
+const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] });
+const page = await browser.newPage();
+await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
+await page.goto('http://localhost:3000', { waitUntil: 'networkidle2' });
+await page.evaluate(() => { document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')); });
+await new Promise(r => setTimeout(r, 500));
+await page.screenshot({ path: '/tmp/viewport-top.png', fullPage: false });
+await page.evaluate(() => window.scrollTo(0, 1000));
+await new Promise(r => setTimeout(r, 300));
+await page.screenshot({ path: '/tmp/viewport-1000.png', fullPage: false });
+await browser.close();

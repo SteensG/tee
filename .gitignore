@@ -1,0 +1,6 @@
+node_modules/
+temporary screenshots/
+current_design/
+
+.DS_Store
+**/.DS_Store
