@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — The Ecological Entrepreneur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest:  { DEFAULT: '#1A3C2B', light: '#234D38', dark: '#122A1E' },
+            sage:    { DEFAULT: '#2D6A4F', light: '#3D8A67', dark: '#1E4E39' },
+            leaf:    { DEFAULT: '#52B788', light: '#74C69D', dark: '#40916C' },
+            cream:   { DEFAULT: '#F5F0E8', light: '#FAF8F3', dark: '#EAE4D6' },
+            bark:    { DEFAULT: '#8B6B47', light: '#A88054', dark: '#6B5235' },
+          },
+          fontFamily: {
+            body:  ['"Readex Pro"', 'system-ui', 'sans-serif'],
+            brand: ['"Readex Pro"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            tightest: '-0.04em',
+            tighter:  '-0.02em',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+
+    .grain::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1;
+    }
+
+    .display-xl { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.0; letter-spacing: -0.03em; font-weight: 600; }
+    .display-lg { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 600; }
+    .display-md { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
+    .display-sm { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; letter-spacing: -0.015em; font-weight: 600; }
+
+    .shadow-green { box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12); }
+    .shadow-cream { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+
+    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
+    .nav-logo { height: 36px; width: auto; }
+    .footer-logo { height: 40px; width: auto; }
+
+    .nav-link { font-size: 0.875rem; font-weight: 400; color: rgba(245,240,232,0.85); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s ease; position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #74C69D; transition: width 0.25s ease; }
+    .nav-link:hover { color: #F5F0E8; }
+    .nav-link:hover::after { width: 100%; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: #1A3C2B; color: #F5F0E8;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.01em;
+      border: 1.5px solid transparent;
+      transition: background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary:hover { background: #234D38; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,60,43,0.25); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: transparent; color: #F5F0E8;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      border: 1.5px solid rgba(245,240,232,0.5);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-outline:hover { border-color: #F5F0E8; background: rgba(245,240,232,0.1); transform: translateY(-2px); }
+    .btn-outline:active { transform: translateY(0); }
+    .btn-outline:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: transparent; color: #1A3C2B;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      border: 1.5px solid #1A3C2B;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-ghost:hover { background: #1A3C2B; color: #F5F0E8; transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .service-card { background: white; border-radius: 16px; padding: 2rem; border: 1px solid rgba(26,60,43,0.08); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor: pointer; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+    .service-card:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .content-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor: pointer; }
+    .content-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.1); }
+
+    .marquee-track { display: flex; gap: 4rem; align-items: center; animation: marquee 24s linear infinite; white-space: nowrap; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .form-input {
+      width: 100%; padding: 0.875rem 1.25rem;
+      background: white; color: #1C1C1E;
+      border: 1.5px solid rgba(26,60,43,0.15); border-radius: 10px;
+      font-family: 'Readex Pro', sans-serif; font-size: 0.875rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    .form-input::placeholder { color: #9CA3AF; }
+    .form-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.12); }
+
+    .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* Tab nav */
+    .tab-btn { padding: 0.5rem 1.25rem; border-radius: 100px; font-family: 'Readex Pro', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; border: 1px solid rgba(245,240,232,0.35); color: rgba(245,240,232,0.7); background: transparent; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+    .tab-btn:hover { color: #F5F0E8; border-color: rgba(245,240,232,0.6); }
+    .tab-btn.active { background: #52B788; color: #1A3C2B; border-color: #52B788; font-weight: 600; }
+    .tab-btn:focus-visible { outline: 2px solid #52B788; outline-offset: 2px; }
+
+    /* Pagination */
+    .page-btn { width: 36px; height: 36px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-family: 'Readex Pro', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; border: 1px solid rgba(26,60,43,0.12); color: #2D6A4F; background: white; }
+    .page-btn:hover { background: #1A3C2B; color: #F5F0E8; border-color: #1A3C2B; }
+    .page-btn.active { background: #1A3C2B; color: #F5F0E8; border-color: #1A3C2B; }
+    .page-btn:focus-visible { outline: 2px solid #52B788; outline-offset: 2px; }
+
+    /* Video card play button */
+    .play-btn { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; }
+    .play-btn:hover { background: white; transform: scale(1.08); }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/index.html" aria-label="The Ecological Entrepreneur — Home">
+        <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="nav-logo">
+      </a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="/services.html" class="nav-link">Our services</a></li>
+        <li><a href="/who-we-are.html" class="nav-link">Who we are</a></li>
+        <li><a href="/resources.html" class="nav-link">Resources</a></li>
+        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+        <li>
+          <a href="#" class="nav-link flex items-center gap-1.5">
+            <span class="text-leaf text-xs">⬡</span> ESGpro
+          </a>
+        </li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="/get-in-touch.html" class="btn-primary text-sm py-2.5 px-5">Get in touch</a>
+        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<!-- PAGE HERO -->
+<section class="relative grain overflow-hidden" style="background: #0d2318; min-height: 55vh;">
+  <!-- Background image -->
+  <div class="absolute inset-0">
+    <img
+      src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      style="filter: brightness(0.35) saturate(0.7);"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(13,35,24,0.3) 0%, rgba(13,35,24,0.75) 100%), radial-gradient(ellipse 80% 70% at 50% 40%, rgba(26,60,43,0.4) 0%, transparent 70%);"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-0 w-full">
+    <div class="max-w-2xl mx-auto text-center">
+      <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-5 fade-up" style="transition-delay:0.1s;">Kennis &amp; inspiratie</p>
+      <h1 class="display-lg text-cream mb-5 fade-up" style="transition-delay:0.2s;">Resources</h1>
+      <p class="text-cream/70 font-body text-lg leading-relaxed fade-up" style="transition-delay:0.3s; line-height:1.7;">
+        Onze visie op het samenbrengen van ecologie en economie.
+      </p>
+    </div>
+
+    <!-- Tab navigation -->
+    <div class="flex items-center justify-center gap-3 mt-10 pb-8 fade-up" style="transition-delay:0.4s;">
+      <button class="tab-btn active" onclick="activateTab(this)">Artikels</button>
+      <button class="tab-btn" onclick="activateTab(this)">Client Cases</button>
+      <button class="tab-btn" onclick="activateTab(this)">Our research</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- FEATURED WEBINAR BANNER -->
+<section class="py-10 lg:py-14" style="background:#EDE8DE;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-6 lg:p-8 flex flex-col lg:flex-row items-center gap-6 fade-up shadow-cream" style="background:white;">
+
+      <!-- EcoVadis badge -->
+      <div class="flex-shrink-0">
+        <div class="w-20 h-20 rounded-2xl flex flex-col items-center justify-center shadow-green" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+          <span class="text-white text-xs font-bold leading-none">eco</span>
+          <span class="text-white text-xs font-bold leading-none">vadis</span>
+          <div class="mt-1 w-8 h-1 rounded-full bg-white/40"></div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 text-center lg:text-left">
+        <div class="flex items-center gap-2 justify-center lg:justify-start mb-2">
+          <span class="tag" style="background:rgba(26,60,43,0.08); color:#1A3C2B;">Webinar</span>
+          <span class="text-gray-400 font-body text-xs">Upcoming webinar</span>
+        </div>
+        <h3 class="display-sm text-forest mb-2" style="font-size:1.5rem;">Wanneer duurzaamheid een selectiecriterium wordt</h3>
+        <p class="text-gray-500 font-body text-sm leading-relaxed max-w-lg" style="line-height:1.65;">
+          Hoe EcoVadis steeds vaker mee bepaalt wie mag meespelen en hoe u dit strategisch inzet.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="flex-shrink-0">
+        <a href="#" class="btn-primary">Schrijf u in</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ARTIKELS SECTION -->
+<section class="py-20 lg:py-28 bg-cream" id="artikels">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 fade-up">
+      <div>
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Recent</p>
+        <h2 class="display-lg text-forest">Artikels</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Article 1 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.05s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/1A3C2B/F5F0E8" alt="ESGpro Reporting" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply"></div>
+          <div class="absolute top-3 right-3">
+            <span class="text-white/60 font-body text-xs">17 maart 2026</span>
+          </div>
+          <div class="absolute bottom-3 left-3">
+            <span class="tag" style="background:rgba(245,240,232,0.2); color:white; backdrop-filter:blur(4px);">Article</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">From Reporting to Direction: How ESGpro Makes Sustainability Reporting Workable</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-4" style="line-height:1.65;">ESGpro automates sustainability reporting through smart data integration and the VSME standard, helping organisations turn reporting into progress.</p>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/2D6A4F/F5F0E8" alt="EcoVadis score" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply"></div>
+          <div class="absolute top-3 right-3">
+            <span class="text-white/60 font-body text-xs">2 juni 2025</span>
+          </div>
+          <div class="absolute bottom-3 left-3">
+            <span class="tag" style="background:rgba(245,240,232,0.2); color:white; backdrop-filter:blur(4px);">Article</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">Beyond the medal: turning your EcoVadis score into strategic sustainability actions</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-4" style="line-height:1.65;">EcoVadis is much more than a scoring tool; it offers a starting point for long-term, strategic sustainability development.</p>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.15s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/52B788/1A3C2B" alt="SBB partnership" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply"></div>
+          <div class="absolute top-3 right-3">
+            <span class="text-white/60 font-body text-xs">5 april 2025</span>
+          </div>
+          <div class="absolute bottom-3 left-3">
+            <span class="tag" style="background:rgba(245,240,232,0.2); color:white; backdrop-filter:blur(4px);">Article</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">Strengthening our sustainable impact with strategic participation by SBB</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-4" style="line-height:1.65;">In a world where sustainability is a necessity rather than a choice, SBB Accountants &amp; Advisors and The Ecological Entrepreneur have joined forces.</p>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex items-center justify-center gap-2 mt-12 fade-up">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">4</button>
+      <button class="page-btn">→</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CLIENT CASES -->
+<section class="py-20 lg:py-28" style="background:#EDE8DE;" id="cases">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 fade-up">
+      <div>
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Case studies</p>
+        <h2 class="display-lg text-forest">Client Cases</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Case 1 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.05s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/1A3C2B/F5F0E8" alt="Exie LCA" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-3 left-3">
+            <span class="tag bg-forest text-cream">Exie</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">Life Cycle Assessment as a tool for mapping environmental impact.</h3>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/143D2D/F5F0E8" alt="Voka training" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-3 left-3">
+            <span class="tag bg-forest text-cream">Voka</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">We organised two very well-received tailor-made sustainability training trajectories for Voka's members.</h3>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.15s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/234D38/F5F0E8" alt="BECOLD cold chain" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-3 left-3">
+            <span class="tag bg-bark text-cream">BECOLD</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">The benefits of an industry-level sustainability approach for the cold chain sector.</h3>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex items-center justify-center gap-2 mt-12 fade-up">
+      <button class="page-btn active">1</button>
+      <button class="page-btn">2</button>
+      <button class="page-btn">3</button>
+      <button class="page-btn">→</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- OUR WEBINARS -->
+<section class="py-20 lg:py-28 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 fade-up">
+      <div>
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Learn with us</p>
+        <h2 class="display-lg text-forest">Our Webinars</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Webinar card (reused 3x) -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.05s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320; background:#1A3C2B;">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button class="play-btn" aria-label="Play webinar">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l10 6-10 6V4z" fill="#1A3C2B"/></svg>
+            </button>
+          </div>
+          <div class="absolute top-3 right-3">
+            <span class="font-body text-xs font-medium px-2 py-1 rounded-md" style="background:rgba(0,0,0,0.5); color:rgba(245,240,232,0.8);">1:12:45</span>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 px-4 py-3" style="background:linear-gradient(to top, rgba(13,35,24,0.9), transparent);">
+            <span class="text-cream/60 font-body text-xs">20 jan. 2026</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-forest text-base font-semibold leading-snug">Wat betekend een EcoVadis medaille echt voor uw organisatie?</h3>
+        </div>
+      </div>
+
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320; background:#234D38;">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button class="play-btn" aria-label="Play webinar">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l10 6-10 6V4z" fill="#234D38"/></svg>
+            </button>
+          </div>
+          <div class="absolute top-3 right-3">
+            <span class="font-body text-xs font-medium px-2 py-1 rounded-md" style="background:rgba(0,0,0,0.5); color:rgba(245,240,232,0.8);">0:58:12</span>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 px-4 py-3" style="background:linear-gradient(to top, rgba(13,35,24,0.9), transparent);">
+            <span class="text-cream/60 font-body text-xs">5 nov. 2025</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-forest text-base font-semibold leading-snug">Wat betekend een EcoVadis medaille echt voor uw organisatie?</h3>
+        </div>
+      </div>
+
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.15s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320; background:#2D6A4F;">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button class="play-btn" aria-label="Play webinar">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l10 6-10 6V4z" fill="#2D6A4F"/></svg>
+            </button>
+          </div>
+          <div class="absolute top-3 right-3">
+            <span class="font-body text-xs font-medium px-2 py-1 rounded-md" style="background:rgba(0,0,0,0.5); color:rgba(245,240,232,0.8);">1:24:05</span>
+          </div>
+          <div class="absolute bottom-0 inset-x-0 px-4 py-3" style="background:linear-gradient(to top, rgba(13,35,24,0.9), transparent);">
+            <span class="text-cream/60 font-body text-xs">18 sept. 2025</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-forest text-base font-semibold leading-snug">Wat betekend een EcoVadis medaille echt voor uw organisatie?</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- REPORTS SECTION -->
+<section class="relative py-20 lg:py-28 grain overflow-hidden" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 80% at 30% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Left -->
+      <div class="fade-up">
+        <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-5">Sustainability reports</p>
+        <h2 class="display-md text-cream mb-6">Benieuwd naar onze rapporten? Bekijk ze hier!</h2>
+        <p class="text-cream/65 font-body leading-relaxed mb-8" style="line-height:1.75;">
+          Onze rapporten geven een diep inzicht in de duurzaamheidstrends en uitdagingen die bedrijven vandaag het hoofd bieden.
+        </p>
+        <a href="#" class="btn-outline">
+          Duurzaamheidrapporten
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: decorative book visual -->
+      <div class="fade-up flex items-center justify-center" style="transition-delay:0.15s;">
+        <div class="relative" style="width:260px; height:320px;">
+          <!-- Book mockup -->
+          <div class="absolute inset-0 rounded-2xl shadow-green" style="background:linear-gradient(135deg, #234D38 0%, #1A3C2B 100%); transform:rotate(-4deg);"></div>
+          <div class="absolute inset-0 rounded-2xl" style="background:linear-gradient(135deg, #2D6A4F 0%, #1E4E39 100%); transform:rotate(-1deg); box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+              <div class="w-12 h-12 rounded-xl bg-leaf/20 flex items-center justify-center mb-4">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="#74C69D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <p class="text-leaf font-body text-xs tracking-widest uppercase font-semibold mb-2">Annual Report</p>
+              <p class="text-cream font-semibold text-lg leading-tight">Sustainability<br/>Report 2025</p>
+              <div class="mt-4 w-8 h-px bg-leaf/40"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- OUR RESEARCH -->
+<section class="py-20 lg:py-28 bg-cream" id="research">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 fade-up">
+      <div>
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Insights</p>
+        <h2 class="display-lg text-forest">Our Research</h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Research 1 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.05s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/1A3C2B/F5F0E8" alt="Sustainability from vision to action" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply"></div>
+        </div>
+        <div class="p-6">
+          <span class="tag mb-3 inline-block" style="background:rgba(82,183,136,0.12); color:#1A3C2B;">Research</span>
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">Sustainability from vision to action</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-4" style="line-height:1.65;">Will we proactively embrace change, or will external forces compel us to do so? Researching over 560 companies.</p>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+      <!-- Research 2 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/2D6A4F/F5F0E8" alt="Ecological solutions" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply"></div>
+        </div>
+        <div class="p-6">
+          <span class="tag mb-3 inline-block" style="background:rgba(82,183,136,0.12); color:#1A3C2B;">Research</span>
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">What keeps ecological solutions from being a business success?</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-4" style="line-height:1.65;">What are the main challenges ecological companies face while operating and scaling their business?</p>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+      <!-- Research 3 -->
+      <div class="content-card fade-up" tabindex="0" style="transition-delay:0.15s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/320;">
+          <img src="https://placehold.co/560x320/40916C/F5F0E8" alt="Drivers and Barriers" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent mix-blend-multiply"></div>
+        </div>
+        <div class="p-6">
+          <span class="tag mb-3 inline-block" style="background:rgba(82,183,136,0.12); color:#1A3C2B;">Research</span>
+          <h3 class="text-forest text-lg font-semibold mb-3 leading-snug">Drivers &amp; Barriers for sustainability</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-4" style="line-height:1.65;">Presenting the drivers for sustainability researching 530 companies.</p>
+          <a href="#" class="text-sage font-body text-sm font-medium hover:text-forest transition-colors inline-flex items-center gap-1">Read more →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="relative py-28 lg:py-36 grain overflow-hidden" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 100% at 20% 50%, rgba(26,60,43,0.6) 0%, transparent 60%), linear-gradient(to right, rgba(18,42,30,0.9) 0%, rgba(18,42,30,0.3) 100%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <div class="max-w-3xl mx-auto fade-up">
+      <h2 class="display-md text-cream mb-6">Let's bring ecology and economy together!</h2>
+      <p class="text-cream/70 font-body text-lg leading-relaxed mb-10" style="line-height:1.7;">
+        We're here to help. Reach out if you need more information or are ready to get started.
+      </p>
+      <a href="/get-in-touch.html" class="btn-primary text-base px-8 py-4">
+        Get in touch
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section class="py-20 lg:py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background: #EDE8DE; border: 1px solid rgba(26,60,43,0.1);">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Stay informed</p>
+          <h2 class="display-md text-forest mb-3">Subscribe to our newsletter</h2>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height: 1.65;">Receive the latest insights on sustainability, ecology, and responsible business growth.</p>
+        </div>
+        <div>
+          <form class="grid sm:grid-cols-2 gap-3">
+            <input type="text" placeholder="First name" class="form-input" />
+            <input type="text" placeholder="Last name" class="form-input" />
+            <input type="text" placeholder="Company name" class="form-input" />
+            <input type="email" placeholder="E-mail address" class="form-input" />
+            <div class="sm:col-span-2">
+              <button type="submit" class="btn-primary w-full justify-center">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer style="background: #122A1E;" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+      <div class="lg:col-span-1">
+        <div class="mb-5">
+          <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="footer-logo">
+        </div>
+        <p class="text-cream/50 font-body text-sm leading-relaxed" style="line-height: 1.7;">Making sustainability self-evident by bringing ecology and economy together.</p>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
+        <ul class="space-y-3">
+          <li><a href="/services.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Our services</a></li>
+          <li><a href="/who-we-are.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Who we are</a></li>
+          <li><a href="/resources.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Resource center</a></li>
+          <li><a href="/accountability.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Accountability</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="mailto:contact@t-ee.eu" class="text-cream/50 font-body text-sm hover:text-cream transition-colors flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0"><path d="M1 3.5A1.5 1.5 0 012.5 2h9A1.5 1.5 0 0113 3.5v7A1.5 1.5 0 0111.5 12h-9A1.5 1.5 0 011 10.5v-7zm1.5-.5a.5.5 0 00-.5.5v.22l5 3.333 5-3.333V3.5a.5.5 0 00-.5-.5h-9zm9.5 2.053l-4.5 3-4.5-3V10.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V5.053z" fill="currentColor"/></svg>
+              contact@t-ee.eu
+            </a>
+          </li>
+          <li>
+            <span class="text-cream/50 font-body text-sm flex items-start gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0 mt-0.5"><path d="M7 1a5 5 0 00-4.33 7.5L1 13l4.5-1.67A5 5 0 107 1zm0 1a4 4 0 11-3.63 5.69l-.14-.26-.27-.1-2.38.88.88-2.38-.1-.27-.26-.14A4 4 0 017 2z" fill="currentColor"/></svg>
+              Koningin Elisabethlei 16,<br/>2018 Antwerp
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-cream/30 font-body text-xs">© 2026 The Ecological Entrepreneur. All rights reserved.</p>
+      <p class="text-cream/30 font-body text-xs">Making sustainability self-evident.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('visible'); observer.unobserve(entry.target);} });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function activateTab(btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

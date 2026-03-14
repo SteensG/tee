@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who We Are — The Ecological Entrepreneur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest:  { DEFAULT: '#1A3C2B', light: '#234D38', dark: '#122A1E' },
+            sage:    { DEFAULT: '#2D6A4F', light: '#3D8A67', dark: '#1E4E39' },
+            leaf:    { DEFAULT: '#52B788', light: '#74C69D', dark: '#40916C' },
+            cream:   { DEFAULT: '#F5F0E8', light: '#FAF8F3', dark: '#EAE4D6' },
+            bark:    { DEFAULT: '#8B6B47', light: '#A88054', dark: '#6B5235' },
+          },
+          fontFamily: {
+            body:    ['"Readex Pro"', 'system-ui', 'sans-serif'],
+            brand:   ['"Readex Pro"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            tightest: '-0.04em',
+            tighter:  '-0.02em',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+
+    .grain::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1;
+    }
+
+    .display-xl { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.0; letter-spacing: -0.03em; font-weight: 600; }
+    .display-lg { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 600; }
+    .display-md { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
+    .display-sm { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; letter-spacing: -0.015em; font-weight: 600; }
+
+    .shadow-green {
+      box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12);
+    }
+    .shadow-cream {
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08);
+    }
+
+    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
+    .nav-logo { height: 36px; width: auto; }
+    .footer-logo { height: 40px; width: auto; }
+    .quote-mark { font-family: 'Readex Pro', system-ui, sans-serif; font-size: 14rem; line-height: 0.7; margin-bottom: -2rem; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: #1A3C2B; color: #F5F0E8;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.01em;
+      border: 1.5px solid transparent;
+      transition: background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary:hover { background: #234D38; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,60,43,0.25); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: transparent; color: #F5F0E8;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      border: 1.5px solid rgba(245,240,232,0.5);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-outline:hover { border-color: #F5F0E8; background: rgba(245,240,232,0.1); transform: translateY(-2px); }
+    .btn-outline:active { transform: translateY(0); }
+    .btn-outline:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: transparent; color: #1A3C2B;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      border: 1.5px solid #1A3C2B;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-ghost:hover { background: #1A3C2B; color: #F5F0E8; transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .service-card {
+      background: white; border-radius: 16px;
+      padding: 2rem; border: 1px solid rgba(26,60,43,0.08);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+    .service-card:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .content-card {
+      background: white; border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .content-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.1); }
+
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .nav-link {
+      font-size: 0.875rem; font-weight: 400; color: rgba(245,240,232,0.85);
+      text-decoration: none; letter-spacing: 0.01em;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+      background: #74C69D; transition: width 0.25s ease;
+    }
+    .nav-link:hover { color: #F5F0E8; }
+    .nav-link:hover::after { width: 100%; }
+
+    .tag {
+      display: inline-block; padding: 0.25rem 0.75rem; border-radius: 100px;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    .form-input {
+      width: 100%; padding: 0.875rem 1.25rem;
+      background: white; color: #1C1C1E;
+      border: 1.5px solid rgba(26,60,43,0.15); border-radius: 10px;
+      font-family: 'Readex Pro', sans-serif; font-size: 0.875rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none;
+    }
+    .form-input::placeholder { color: #9CA3AF; }
+    .form-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.12); }
+
+    /* Team card hover */
+    .team-card { overflow: hidden; border-radius: 16px; background: white; }
+    .team-card img { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .team-card:hover img { transform: scale(1.04); }
+
+    /* Timeline */
+    .timeline-item { position: relative; }
+    .timeline-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #52B788; border: 3px solid #EDE8DE;
+      box-shadow: 0 0 0 3px rgba(82,183,136,0.3);
+    }
+
+    /* Job card */
+    .job-card {
+      background: white; border-radius: 16px;
+      padding: 2rem; border: 1px solid rgba(26,60,43,0.08);
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    }
+    .job-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/index.html" aria-label="The Ecological Entrepreneur — Home">
+        <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="nav-logo">
+      </a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="/services.html" class="nav-link">Our services</a></li>
+        <li><a href="/who-we-are.html" class="nav-link">Who we are</a></li>
+        <li><a href="/resources.html" class="nav-link">Resources</a></li>
+        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+        <li>
+          <a href="#" class="nav-link flex items-center gap-1.5">
+            <span class="text-leaf text-xs">⬡</span> ESGpro
+          </a>
+        </li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="/get-in-touch.html" class="btn-primary text-sm py-2.5 px-5">Get in touch</a>
+        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="relative flex items-center grain overflow-hidden" style="background: #0d2318; min-height: 60vh;">
+  <div class="absolute inset-0">
+    <img
+      src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      style="filter: brightness(0.45) saturate(0.85);"
+    />
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 70% at 60% 40%, rgba(26,60,43,0.3) 0%, transparent 70%), radial-gradient(ellipse 60% 90% at 10% 80%, rgba(18,42,30,0.7) 0%, transparent 60%), linear-gradient(to bottom, rgba(13,35,24,0.3) 0%, rgba(13,35,24,0.75) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24 w-full">
+    <div class="max-w-3xl">
+      <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-6 fade-up" style="transition-delay:0.1s;">About us</p>
+      <h1 class="display-lg text-cream mb-6 fade-up" style="transition-delay:0.2s;">Who we are.</h1>
+      <p class="text-cream/75 font-body leading-relaxed max-w-2xl fade-up" style="line-height:1.7; transition-delay:0.3s;">
+        The Ecological Entrepreneur is convinced that 'sustainable business' should become the basis of all business. A business should be evaluated on its ecological, social and, economic impact; not just the latter. Together, we aim to make sustainability self-evident!
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     OUR STORY
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+      <!-- Left: blockquote card -->
+      <div class="rounded-2xl p-10 lg:p-14 flex items-center justify-center fade-up" style="background: #1A3C2B; min-height: 420px;">
+        <div class="relative z-10">
+          <div class="text-leaf/20 select-none pointer-events-none" style="font-family:'Readex Pro',sans-serif; font-size:8rem; line-height:0.6; margin-bottom:-1rem;">"</div>
+          <blockquote class="display-sm text-cream" style="font-size:clamp(1.5rem,3vw,2.2rem);">
+            Bringing economy and ecology together requires balance on both axes
+          </blockquote>
+          <div class="mt-8 w-10 h-px" style="background: rgba(82,183,136,0.4);"></div>
+        </div>
+      </div>
+
+      <!-- Right: story copy -->
+      <div class="fade-up" style="transition-delay:0.15s;">
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-4">Our story</p>
+        <h2 class="display-md text-forest mb-8">A company born from belief</h2>
+        <div class="space-y-5">
+          <p class="text-gray-600 font-body leading-relaxed" style="line-height:1.75;">
+            The Ecological Entrepreneur is a company established in 2020, born out a simple belief: we can make sustainability self-evident by bringing economy and ecology together. This is necessary to maintain our current level of prosperity and well-being and to protect our natural world.
+          </p>
+          <p class="text-gray-600 font-body leading-relaxed" style="line-height:1.75;">
+            As a society, we have forgotten to think multifaceted. Organisations do not know where to start in reducing their environmental impact. On the other hand, many sustainable solutions already exist but experience challenges with their commercial scale.
+          </p>
+          <p class="text-gray-600 font-body leading-relaxed" style="line-height:1.75;">
+            Learn how strategic, concrete guidance helps your organisation move towards a sustainable future. With the right attitude, approach, and support, you will make your sustainability promises come true!
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TIMELINE
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32" style="background: #EDE8DE;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-14 fade-up">
+      <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-4">Our journey so far...</p>
+    </div>
+
+    <!-- Desktop: horizontal timeline -->
+    <div class="hidden lg:grid lg:grid-cols-3 gap-0 relative fade-up" style="transition-delay:0.1s;">
+      <!-- Connecting line -->
+      <div class="absolute top-6 left-16 right-16 h-px" style="background: rgba(26,60,43,0.15);"></div>
+
+      <!-- 2023 -->
+      <div class="relative pr-10">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="timeline-dot flex-shrink-0" style="border-color: #EDE8DE;"></div>
+          <span class="display-sm text-forest" style="font-size: 1.5rem;">2023</span>
+        </div>
+        <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.75;">
+          A year for scaling and growth. Although the year is in full motion, we welcomed 8 new team members!
+        </p>
+      </div>
+
+      <!-- 2024 -->
+      <div class="relative px-5">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="timeline-dot flex-shrink-0" style="border-color: #EDE8DE;"></div>
+          <span class="display-sm text-forest" style="font-size: 1.5rem;">2024</span>
+        </div>
+        <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.75;">
+          2024 has been an exciting year for us. Our team has grown to 20 members (and still expanding), we've moved to a new office in Antwerp, nestled between two beautiful city parks, and we proudly launched our very own Sustainability Academy. Plus, we've shared plenty of fun moments as a team along the way!
+        </p>
+      </div>
+
+      <!-- 2025 -->
+      <div class="relative pl-10">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="timeline-dot flex-shrink-0" style="border-color: #EDE8DE;"></div>
+          <span class="display-sm text-forest" style="font-size: 1.5rem;">2025</span>
+        </div>
+        <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.75;">
+          In the first quarter of 2025, we've welcomed SBB Accountants &amp; Advisors as a minority partner, strengthening our expertise while staying independent. This partnership helps us drive impact, turning compliance into opportunity and guiding businesses toward sustainable, long-term success.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mobile: vertical timeline -->
+    <div class="lg:hidden space-y-10">
+      <div class="fade-up flex gap-6">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot flex-shrink-0" style="border-color: #EDE8DE;"></div>
+          <div class="flex-1 w-px mt-3" style="background: rgba(26,60,43,0.15);"></div>
+        </div>
+        <div class="pb-6">
+          <span class="display-sm text-forest mb-4 block" style="font-size:1.4rem;">2023</span>
+          <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.75;">A year for scaling and growth. Although the year is in full motion, we welcomed 8 new team members!</p>
+        </div>
+      </div>
+      <div class="fade-up flex gap-6" style="transition-delay:0.1s;">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot flex-shrink-0" style="border-color: #EDE8DE;"></div>
+          <div class="flex-1 w-px mt-3" style="background: rgba(26,60,43,0.15);"></div>
+        </div>
+        <div class="pb-6">
+          <span class="display-sm text-forest mb-4 block" style="font-size:1.4rem;">2024</span>
+          <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.75;">2024 has been an exciting year for us. Our team has grown to 20 members (and still expanding), we've moved to a new office in Antwerp, nestled between two beautiful city parks, and we proudly launched our very own Sustainability Academy. Plus, we've shared plenty of fun moments as a team along the way!</p>
+        </div>
+      </div>
+      <div class="fade-up flex gap-6" style="transition-delay:0.2s;">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot flex-shrink-0" style="border-color: #EDE8DE;"></div>
+        </div>
+        <div>
+          <span class="display-sm text-forest mb-4 block" style="font-size:1.4rem;">2025</span>
+          <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.75;">In the first quarter of 2025, we've welcomed SBB Accountants &amp; Advisors as a minority partner, strengthening our expertise while staying independent. This partnership helps us drive impact, turning compliance into opportunity and guiding businesses toward sustainable, long-term success.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     VALUES
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-14 fade-up">
+      <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">What we stand for</p>
+      <h2 class="display-md text-forest">Our values</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <!-- Value 1 -->
+      <div class="service-card fade-up" style="transition-delay:0.05s;" tabindex="0">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(26,60,43,0.08);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-forest text-xl font-semibold mb-3">We think in terms of solutions</h3>
+        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We are here to offer possibilities and solutions, spark hope and hand organisations the opportunity to take sustainable action.</p>
+      </div>
+
+      <!-- Value 2 -->
+      <div class="service-card fade-up" style="transition-delay:0.1s;" tabindex="0">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(26,60,43,0.08);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-forest text-xl font-semibold mb-3">We put people first</h3>
+        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We are here to offer possibilities and solutions, spark hope and hand organisations the opportunity to take sustainable action.</p>
+      </div>
+
+      <!-- Value 3 -->
+      <div class="service-card fade-up" style="transition-delay:0.15s;" tabindex="0">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(26,60,43,0.08);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-forest text-xl font-semibold mb-3">We practice what we preach</h3>
+        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We follow our own advice and aim to be the best in class when it comes to the sustainability of our organisation. We believe in an honest, straightforward, no-nonsense approach to sustainability with measurable results.</p>
+      </div>
+
+      <!-- Value 4 -->
+      <div class="service-card fade-up" style="transition-delay:0.2s;" tabindex="0">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background: rgba(26,60,43,0.08);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-forest text-xl font-semibold mb-3">We leverage the accuracy of data</h3>
+        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We follow our own advice and aim to be the best in class when it comes to the sustainability of our organisation. We believe in an honest, straightforward, no-nonsense approach to sustainability with measurable results.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     VISION SECTION (dark)
+═══════════════════════════════════════════ -->
+<section class="relative py-24 lg:py-32 grain overflow-hidden" style="background: #1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(82,183,136,0.06) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-3 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
+
+      <!-- Vision block 1 -->
+      <div class="py-10 lg:py-0 lg:pr-10 fade-up">
+        <h3 class="text-leaf font-body text-sm font-semibold tracking-widest uppercase mb-5">Sustainability according to our vision</h3>
+        <p class="text-cream/70 font-body text-sm leading-relaxed" style="line-height:1.8;">
+          The 'why' of sustainability seems obvious by now, the 'how' and the 'what' a lot less so. For many, sustainability remains a complex and confusing concept. And even without confusion, questions arise about the usefulness of actions and their impact. The Ecological Entrepreneur was born out of one simple need: the realisation of sustainable progress by bringing economy and ecology together.
+        </p>
+      </div>
+
+      <!-- Vision block 2 -->
+      <div class="py-10 lg:py-0 lg:px-10 fade-up" style="transition-delay:0.15s;">
+        <h3 class="text-leaf font-body text-sm font-semibold tracking-widest uppercase mb-5">Drivers of Change</h3>
+        <p class="text-cream/70 font-body text-sm leading-relaxed" style="line-height:1.8;">
+          Sustainability is often associated with reductions or a phase-out. However, a green business model does not aim to 'cut' existing processes. Our aim is to develop processes in balance with our environment and society, considering all burdens and profits. In other words: minimal environmental impact, maximum output for prosperity and well-being. By creating 'green business models', we move towards regenerative and thriving value creation in all domains: economic, ecologic, and social.
+        </p>
+      </div>
+
+      <!-- Vision block 3 -->
+      <div class="py-10 lg:py-0 lg:pl-10 fade-up" style="transition-delay:0.3s;">
+        <h3 class="text-leaf font-body text-sm font-semibold tracking-widest uppercase mb-5">Going eco is moving forward</h3>
+        <p class="text-cream/70 font-body text-sm leading-relaxed" style="line-height:1.8;">
+          A lot of solutions to current sustainability problems already exist. Although 'eco-born-companies' are on the rise, many struggle to survive and thrive as economically viable businesses. Our market is a crucial vehicle for commercial success. The Ecological Entrepreneur helps your company from strategy to operations. We define the go-to-market, (re)design and set-up the processes, and facilitate your growth through operational support.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TEAM
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-14 fade-up">
+      <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">The people behind it</p>
+      <h2 class="display-md text-forest mb-5">Meet the team</h2>
+      <p class="text-gray-500 font-body leading-relaxed max-w-2xl" style="line-height:1.75;">
+        All great things we accomplish with our company are done by an amazing team of people! Get to know the passionate people working at The Ecological Entrepreneur, to make your experience the best it can be.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Team 1 -->
+      <div class="team-card fade-up shadow-cream" style="transition-delay:0.05s;">
+        <div class="overflow-hidden" style="aspect-ratio:4/5;">
+          <img src="https://placehold.co/400x500/2D6A4F/F5F0E8" alt="Femke Van Riet" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5">
+          <h3 class="text-forest font-semibold text-lg mb-1">Femke Van Riet</h3>
+          <p class="text-sage font-body text-sm">Lead Sustainability Consultant</p>
+        </div>
+      </div>
+
+      <!-- Team 2 -->
+      <div class="team-card fade-up shadow-cream" style="transition-delay:0.1s;">
+        <div class="overflow-hidden" style="aspect-ratio:4/5;">
+          <img src="https://placehold.co/400x500/2D6A4F/F5F0E8" alt="Sebastiaan De Block" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5">
+          <h3 class="text-forest font-semibold text-lg mb-1">Sebastiaan De Block</h3>
+          <p class="text-sage font-body text-sm">Founder &amp; CEO</p>
+        </div>
+      </div>
+
+      <!-- Team 3 -->
+      <div class="team-card fade-up shadow-cream" style="transition-delay:0.15s;">
+        <div class="overflow-hidden" style="aspect-ratio:4/5;">
+          <img src="https://placehold.co/400x500/2D6A4F/F5F0E8" alt="Hannelore Standaert" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5">
+          <h3 class="text-forest font-semibold text-lg mb-1">Hannelore Standaert</h3>
+          <p class="text-sage font-body text-sm">Sustainability Consultant</p>
+        </div>
+      </div>
+
+      <!-- Team 4 -->
+      <div class="team-card fade-up shadow-cream" style="transition-delay:0.2s;">
+        <div class="overflow-hidden" style="aspect-ratio:4/5;">
+          <img src="https://placehold.co/400x500/2D6A4F/F5F0E8" alt="Lisa van de Wijgerd" class="w-full h-full object-cover" />
+        </div>
+        <div class="p-5">
+          <h3 class="text-forest font-semibold text-lg mb-1">Lisa van de Wijgerd</h3>
+          <p class="text-sage font-body text-sm">Lead Sustainability Consultant</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     JOIN US
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32" style="background: #EDE8DE;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-12 fade-up">
+      <h2 class="display-md text-forest mb-5">Join us!</h2>
+      <p class="text-gray-600 font-body leading-relaxed max-w-2xl" style="line-height:1.75;">
+        Sustainability, climate, social cohesion, … the challenges of the 21st century. How can we reconcile sustainability on an ecological, economic, and social level? We are looking for you!
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <!-- Job 1 -->
+      <div class="job-card fade-up" style="transition-delay:0.05s;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background: rgba(26,60,43,0.08);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" fill="#2D6A4F"/></svg>
+        </div>
+        <h3 class="text-forest text-xl font-semibold mb-3">Sustainability Consultant</h3>
+        <p class="text-gray-500 font-body text-sm leading-relaxed mb-8" style="line-height:1.75;">
+          As a Sustainability Consultant, you'll help clients transition to sustainable business practices by shaping strategies, policies, and actions to reduce climate impact. Ready to make a difference? Join us in driving sustainability forward!
+        </p>
+        <a href="#" class="btn-ghost text-sm">More about this</a>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="job-card fade-up" style="transition-delay:0.1s;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background: rgba(26,60,43,0.08);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a3 3 0 100-6 3 3 0 000 6zm3.707-3.707a1 1 0 00-1.414-1.414L13 13.172l-.293-.293a1 1 0 00-1.414 1.414l1 1a1 1 0 001.414 0l3-3z" fill="#2D6A4F"/></svg>
+        </div>
+        <h3 class="text-forest text-xl font-semibold mb-3">Carbon Footprint Consultant</h3>
+        <p class="text-gray-500 font-body text-sm leading-relaxed mb-8" style="line-height:1.75;">
+          Passionate about sustainability? As a Carbon Consultant, you'll conduct CO₂ analyses and develop net-zero strategies to help businesses go greener. Ready to make an impact? Join us!
+        </p>
+        <a href="#" class="btn-ghost text-sm">More about this</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════ -->
+<section class="relative py-28 lg:py-36 grain overflow-hidden">
+  <div class="absolute inset-0" style="background: #1A3C2B;">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 100% at 20% 50%, rgba(26,60,43,0.6) 0%, transparent 60%), linear-gradient(to right, rgba(18,42,30,0.9) 0%, rgba(18,42,30,0.3) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl fade-up">
+      <h2 class="display-xl text-cream mb-6" style="font-size: clamp(2.8rem,6vw,5.5rem);">Let's bring ecology and economy together!</h2>
+      <p class="text-cream/70 font-body text-lg leading-relaxed mb-10" style="line-height: 1.7;">
+        We're here to help. Reach out if you need more information or are ready to get started.
+      </p>
+      <a href="/get-in-touch.html" class="btn-primary text-base px-8 py-4">
+        Get in touch
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     NEWSLETTER
+═══════════════════════════════════════════ -->
+<section class="py-20 lg:py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background: #EDE8DE; border: 1px solid rgba(26,60,43,0.1);">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Stay informed</p>
+          <h2 class="display-md text-forest mb-3">Subscribe to our newsletter</h2>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height: 1.65;">Receive the latest insights on sustainability, ecology, and responsible business growth.</p>
+        </div>
+        <div>
+          <form class="grid sm:grid-cols-2 gap-3">
+            <input type="text" placeholder="First name" class="form-input" />
+            <input type="text" placeholder="Last name" class="form-input" />
+            <input type="text" placeholder="Company name" class="form-input" />
+            <input type="email" placeholder="E-mail address" class="form-input" />
+            <div class="sm:col-span-2">
+              <button type="submit" class="btn-primary w-full justify-center">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer style="background: #122A1E;" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+      <div class="lg:col-span-1">
+        <div class="mb-5">
+          <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="footer-logo">
+        </div>
+        <p class="text-cream/50 font-body text-sm leading-relaxed" style="line-height: 1.7;">
+          Making sustainability self-evident by bringing ecology and economy together.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
+        <ul class="space-y-3">
+          <li><a href="/services.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Our services</a></li>
+          <li><a href="/who-we-are.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Who we are</a></li>
+          <li><a href="/resources.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Resource center</a></li>
+          <li><a href="/accountability.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Accountability</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="mailto:contact@t-ee.eu" class="text-cream/50 font-body text-sm hover:text-cream transition-colors flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0"><path d="M1 3.5A1.5 1.5 0 012.5 2h9A1.5 1.5 0 0113 3.5v7A1.5 1.5 0 0111.5 12h-9A1.5 1.5 0 011 10.5v-7zm1.5-.5a.5.5 0 00-.5.5v.22l5 3.333 5-3.333V3.5a.5.5 0 00-.5-.5h-9zm9.5 2.053l-4.5 3-4.5-3V10.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V5.053z" fill="currentColor"/></svg>
+              contact@t-ee.eu
+            </a>
+          </li>
+          <li>
+            <span class="text-cream/50 font-body text-sm flex items-start gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0 mt-0.5"><path d="M7 1a5 5 0 00-4.33 7.5L1 13l4.5-1.67A5 5 0 107 1zm0 1a4 4 0 11-3.63 5.69l-.14-.26-.27-.1-2.38.88.88-2.38-.1-.27-.26-.14A4 4 0 017 2z" fill="currentColor"/></svg>
+              Koningin Elisabethlei 16,<br/>2018 Antwerp
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-cream/30 font-body text-xs">© 2026 The Ecological Entrepreneur. All rights reserved.</p>
+      <p class="text-cream/30 font-body text-xs">Making sustainability self-evident.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

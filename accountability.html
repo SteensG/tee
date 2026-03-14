@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accountability — The Ecological Entrepreneur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest:  { DEFAULT: '#1A3C2B', light: '#234D38', dark: '#122A1E' },
+            sage:    { DEFAULT: '#2D6A4F', light: '#3D8A67', dark: '#1E4E39' },
+            leaf:    { DEFAULT: '#52B788', light: '#74C69D', dark: '#40916C' },
+            cream:   { DEFAULT: '#F5F0E8', light: '#FAF8F3', dark: '#EAE4D6' },
+            bark:    { DEFAULT: '#8B6B47', light: '#A88054', dark: '#6B5235' },
+          },
+          fontFamily: {
+            body:    ['"Readex Pro"', 'system-ui', 'sans-serif'],
+            brand:   ['"Readex Pro"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            tightest: '-0.04em',
+            tighter:  '-0.02em',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+
+    .grain::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1;
+    }
+
+    .display-xl { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.0; letter-spacing: -0.03em; font-weight: 600; }
+    .display-lg { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 600; }
+    .display-md { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
+    .display-sm { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; letter-spacing: -0.015em; font-weight: 600; }
+
+    .shadow-green { box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12); }
+    .shadow-cream { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+
+    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
+    .nav-logo { height: 36px; width: auto; }
+    .footer-logo { height: 40px; width: auto; }
+    .quote-mark { font-family: 'Readex Pro', system-ui, sans-serif; font-size: 14rem; line-height: 0.7; margin-bottom: -2rem; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: #1A3C2B; color: #F5F0E8;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.01em;
+      border: 1.5px solid transparent;
+      transition: background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      cursor: pointer; text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary:hover { background: #234D38; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,60,43,0.25); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: transparent; color: #F5F0E8;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      border: 1.5px solid rgba(245,240,232,0.5);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-outline:hover { border-color: #F5F0E8; background: rgba(245,240,232,0.1); transform: translateY(-2px); }
+    .btn-outline:active { transform: translateY(0); }
+    .btn-outline:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: transparent; color: #1A3C2B;
+      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem; font-weight: 500;
+      border: 1.5px solid #1A3C2B;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-ghost:hover { background: #1A3C2B; color: #F5F0E8; transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .service-card { background: white; border-radius: 16px; padding: 2rem; border: 1px solid rgba(26,60,43,0.08); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor: pointer; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+    .service-card:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .content-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor: pointer; }
+    .content-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.1); }
+
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    .nav-link { font-size: 0.875rem; font-weight: 400; color: rgba(245,240,232,0.85); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s ease; position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #74C69D; transition: width 0.25s ease; }
+    .nav-link:hover { color: #F5F0E8; }
+    .nav-link:hover::after { width: 100%; }
+
+    .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .form-input { width: 100%; padding: 0.875rem 1.25rem; background: white; color: #1C1C1E; border: 1.5px solid rgba(26,60,43,0.15); border-radius: 10px; font-family: 'Readex Pro', sans-serif; font-size: 0.875rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; outline: none; }
+    .form-input::placeholder { color: #9CA3AF; }
+    .form-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.12); }
+
+    /* Sticky image sidebar */
+    @media (min-width: 1024px) {
+      .sticky-image { position: sticky; top: 5rem; }
+    }
+
+    /* Report card */
+    .report-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid rgba(26,60,43,0.08); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; }
+    .report-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+    .report-card img { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .report-card:hover img { transform: scale(1.03); }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/index.html" aria-label="The Ecological Entrepreneur — Home">
+        <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="nav-logo">
+      </a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="/services.html" class="nav-link">Our services</a></li>
+        <li><a href="/who-we-are.html" class="nav-link">Who we are</a></li>
+        <li><a href="/resources.html" class="nav-link">Resources</a></li>
+        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+        <li>
+          <a href="#" class="nav-link flex items-center gap-1.5">
+            <span class="text-leaf text-xs">⬡</span> ESGpro
+          </a>
+        </li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="/get-in-touch.html" class="btn-primary text-sm py-2.5 px-5">Get in touch</a>
+        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="relative flex items-center grain overflow-hidden" style="background: #0d2318; min-height: 60vh;">
+  <div class="absolute inset-0">
+    <img
+      src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      style="filter: brightness(0.45) saturate(0.85);"
+    />
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 70% at 60% 40%, rgba(26,60,43,0.3) 0%, transparent 70%), radial-gradient(ellipse 60% 90% at 10% 80%, rgba(18,42,30,0.7) 0%, transparent 60%), linear-gradient(to bottom, rgba(13,35,24,0.3) 0%, rgba(13,35,24,0.75) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24 w-full">
+    <div class="max-w-3xl">
+      <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-6 fade-up" style="transition-delay:0.1s;">Sustainability report</p>
+      <h1 class="display-lg text-cream mb-6 fade-up" style="transition-delay:0.2s;">Our own sustainability approach</h1>
+      <p class="text-cream/75 font-body leading-relaxed max-w-2xl fade-up" style="line-height:1.7; transition-delay:0.3s;">
+        An exciting journey of continuous improvement and innovation
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     INTRO SECTION
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left: Image -->
+      <div class="relative rounded-2xl overflow-hidden fade-up" style="min-height: 400px;">
+        <img src="https://placehold.co/600x450/2D6A4F/F5F0E8" alt="Our sustainability approach" class="w-full h-full object-cover" style="min-height:400px;" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(26,60,43,0.6) 0%, rgba(26,60,43,0.1) 60%, transparent 100%);"></div>
+        <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.15);"></div>
+      </div>
+
+      <!-- Right: Copy -->
+      <div class="fade-up" style="transition-delay:0.15s;">
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-5">About our approach</p>
+        <div class="space-y-5 mb-10">
+          <p class="text-gray-600 font-body leading-relaxed" style="line-height:1.75;">
+            Since The Ecological Entrepreneur was founded, we have been driven by a holistic vision of sustainability. It's our mission to harmonise economy with ecology and society. We want to create a positive impact on all three levels, and help others to do the same, so we can safeguard our current quality of life and ensure a fair and fulfilling life for everyone – today and in the future.
+          </p>
+          <p class="text-gray-600 font-body leading-relaxed" style="line-height:1.75;">
+            Our yearly sustainability report encourages us to reflect on our past efforts, track our progress, and cast our eye towards the future. Our goal is to create transparency and inspire action – within our own organisation, amongst stakeholders, and clients.
+          </p>
+        </div>
+        <a href="#" class="btn-primary">
+          Download our 2024 report
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v7M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     QUOTE (dark)
+═══════════════════════════════════════════ -->
+<section class="relative py-28 lg:py-36 grain overflow-hidden" style="background: #1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center fade-up">
+    <div class="text-leaf/20 select-none pointer-events-none quote-mark">"</div>
+    <blockquote class="display-lg text-cream">
+      Our ambition is to be the best in class. We've accomplished a great deal, but we recognise that we're still on a journey. Perfection isn't our aim – continuous improvement is. We embrace being 90% there, as it leaves room for growth, innovation, and adaptation. We know that the path to sustainability is ever evolving, and we're committed to evolving with it.
+    </blockquote>
+    <div class="mt-10 w-12 h-px bg-leaf/40 mx-auto mb-6"></div>
+    <p class="text-cream/50 font-body text-sm">— Sebastiaan &amp; Marit – founders of The Ecological Entrepreneur</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     GOALS
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="mb-12 fade-up">
+      <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Our targets</p>
+      <h2 class="display-md text-forest mb-6">What we aim for</h2>
+      <p class="text-gray-500 font-body leading-relaxed max-w-3xl" style="line-height:1.75;">
+        Our sustainability strategy consists of long- and short-term goals. The roadmap we developed to reach those goals is extensive and highly detailed, and more importantly, subject to change if need be. However, we have defined a few overarching goals and priorities we are determined to achieve no matter what.
+      </p>
+    </div>
+
+    <!-- Goal cards -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-14">
+
+      <div class="rounded-2xl p-8 fade-up" style="background: #1A3C2B; transition-delay:0.05s;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background: rgba(82,183,136,0.15);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4zm0 2a1 1 0 011 1v3.586l2.707 2.707a1 1 0 01-1.414 1.414l-3-3A1 1 0 019 11V7a1 1 0 011-1z" fill="#52B788"/></svg>
+        </div>
+        <p class="text-cream/90 font-body text-sm leading-relaxed" style="line-height:1.8;">
+          By 2025, our goal is to reach climate neutrality, and by 2030, to become carbon negative.
+        </p>
+      </div>
+
+      <div class="rounded-2xl p-8 fade-up" style="background: #1A3C2B; transition-delay:0.1s;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background: rgba(82,183,136,0.15);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" fill="#52B788"/></svg>
+        </div>
+        <p class="text-cream/90 font-body text-sm leading-relaxed" style="line-height:1.8;">
+          Inclusivity, employee well-being, and ethical supplier and customer relations are non-negotiable.
+        </p>
+      </div>
+
+      <div class="rounded-2xl p-8 fade-up" style="background: #1A3C2B; transition-delay:0.15s;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background: rgba(82,183,136,0.15);">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9zM4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" fill="#52B788"/></svg>
+        </div>
+        <p class="text-cream/90 font-body text-sm leading-relaxed" style="line-height:1.8;">
+          We will implement policies that align with our commitment to ethical business practices and transparency.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="text-center fade-up" style="transition-delay:0.2s;">
+      <p class="text-gray-500 font-body text-sm leading-relaxed mb-6" style="line-height:1.7;">
+        For a more detailed insight into our sustainability targets and action plan, download our latest sustainability report:
+      </p>
+      <a href="#" class="btn-primary">
+        Download our 2024 report
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v7M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     REPORT BANNER (full-width, dark)
+═══════════════════════════════════════════ -->
+<section class="relative py-20 lg:py-28 overflow-hidden" style="background: #122A1E;">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(82,183,136,0.06) 0%, transparent 60%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left: text -->
+      <div class="fade-up">
+        <p class="text-leaf font-body text-xs font-semibold tracking-widest uppercase mb-5">TEE Sustainability Report 2024</p>
+        <h2 class="display-lg text-cream mb-4">Our Journey to Sustainable Impact</h2>
+        <p class="text-cream/50 font-body text-sm font-semibold tracking-widest uppercase mb-10">SUSTAINABILITY REPORT 2024</p>
+        <a href="#" class="btn-primary">
+          Download our 2024 report
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v7M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: decorative elements -->
+      <div class="fade-up flex items-center justify-center" style="transition-delay:0.15s;">
+        <div class="relative w-72 h-72">
+          <!-- Decorative circles -->
+          <div class="absolute inset-0 rounded-full" style="border: 1px solid rgba(82,183,136,0.15);"></div>
+          <div class="absolute" style="inset: 20px; border-radius: 50%; border: 1px solid rgba(82,183,136,0.1);"></div>
+          <div class="absolute" style="inset: 40px; border-radius: 50%; border: 1px solid rgba(82,183,136,0.08);"></div>
+          <!-- Center content -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
+            <span class="text-leaf font-body text-xs font-semibold tracking-widest uppercase mb-2">2024</span>
+            <span class="display-sm text-cream" style="font-size:1.1rem; line-height:1.4;">Sustainability<br/>Report</span>
+            <div class="mt-4 w-8 h-px" style="background: rgba(82,183,136,0.4);"></div>
+            <span class="text-cream/40 font-body text-xs mt-3">The Ecological Entrepreneur</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     GOLDEN RULES
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+      <!-- Left: Sticky image -->
+      <div class="sticky-image self-start fade-up">
+        <div class="relative rounded-2xl overflow-hidden" style="min-height: 520px;">
+          <img
+            src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg"
+            alt="Our golden rules"
+            class="w-full h-full object-cover"
+            style="min-height: 520px;"
+          />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(26,60,43,0.7) 0%, rgba(26,60,43,0.1) 60%, transparent 100%);"></div>
+          <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
+          <div class="absolute bottom-8 left-8 right-8">
+            <p class="text-cream/60 font-body text-xs font-semibold tracking-widest uppercase mb-2">Our principles</p>
+            <p class="text-cream font-semibold text-lg">Grounded in values that guide our every step.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Rules list -->
+      <div class="fade-up" style="transition-delay:0.15s;">
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-4">Our principles</p>
+        <h2 class="display-md text-forest mb-5">Our golden rules</h2>
+        <p class="text-gray-500 font-body text-sm leading-relaxed mb-12" style="line-height:1.75;">
+          Our sustainability strategy is firmly rooted in a few guiding principles and values that shape our approach:
+        </p>
+
+        <div class="space-y-10">
+
+          <!-- Rule 1 -->
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-semibold text-lg" style="background: rgba(26,60,43,0.08); color: #1A3C2B;">01</div>
+            <div>
+              <h3 class="text-forest font-semibold text-lg mb-2">We strive for continuous improvement</h3>
+              <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We see sustainability as a journey of growth, not a pursuit of perfection. Being 'almost there' excites us. It opens doors for innovation and adaptability in a field that's always evolving. We're committed to evolving with it.</p>
+            </div>
+          </div>
+
+          <!-- Rule 2 -->
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-semibold text-lg" style="background: rgba(26,60,43,0.08); color: #1A3C2B;">02</div>
+            <div>
+              <h3 class="text-forest font-semibold text-lg mb-2">We strive for continuous improvement</h3>
+              <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We see sustainability as a journey of growth, not a pursuit of perfection. Being 'almost there' excites us. It opens doors for innovation and adaptability in a field that's always evolving. We're committed to evolving with it.</p>
+            </div>
+          </div>
+
+          <!-- Rule 3 -->
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-semibold text-lg" style="background: rgba(26,60,43,0.08); color: #1A3C2B;">03</div>
+            <div>
+              <h3 class="text-forest font-semibold text-lg mb-2">We strive for continuous improvement</h3>
+              <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We see sustainability as a journey of growth, not a pursuit of perfection. Being 'almost there' excites us. It opens doors for innovation and adaptability in a field that's always evolving. We're committed to evolving with it.</p>
+            </div>
+          </div>
+
+          <!-- Rule 4 -->
+          <div class="flex gap-6">
+            <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-semibold text-lg" style="background: rgba(26,60,43,0.08); color: #1A3C2B;">04</div>
+            <div>
+              <h3 class="text-forest font-semibold text-lg mb-2">We strive for continuous improvement</h3>
+              <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.75;">We see sustainability as a journey of growth, not a pursuit of perfection. Being 'almost there' excites us. It opens doors for innovation and adaptability in a field that's always evolving. We're committed to evolving with it.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     REPORTS SECTION
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32" style="background: #EDE8DE;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="mb-12 fade-up">
+      <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Follow along on our journey</p>
+      <h2 class="display-md text-forest">Our sustainability reports</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-8">
+
+      <!-- Report 2024 -->
+      <div class="report-card fade-up" style="transition-delay:0.05s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/360;">
+          <img src="https://placehold.co/560x360/1A3C2B/F5F0E8" alt="2024 Sustainability Report" class="w-full h-full object-cover" />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(26,60,43,0.4) 0%, transparent 60%);"></div>
+          <div class="absolute top-4 left-4">
+            <span class="tag" style="background: #52B788; color: white;">2024</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-forest text-xl font-semibold mb-3">Our 2024 Sustainability Report</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-8" style="line-height:1.75;">
+            Our second sustainability report offers us a space to reflect on our sustainable efforts in 2024, evaluate our results and finetune our roadmap where necessary. We are proud of the progress that we made and happy to invite you to read this report and follow along on our journey.
+          </p>
+          <a href="#" class="btn-ghost text-sm">
+            Download our 2024 report
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M4 7l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Report 2023 -->
+      <div class="report-card fade-up" style="transition-delay:0.1s;">
+        <div class="relative overflow-hidden" style="aspect-ratio:560/360;">
+          <img src="https://placehold.co/560x360/1A3C2B/F5F0E8" alt="2023 Sustainability Report" class="w-full h-full object-cover" />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(26,60,43,0.4) 0%, transparent 60%);"></div>
+          <div class="absolute top-4 left-4">
+            <span class="tag" style="background: rgba(26,60,43,0.6); color: #F5F0E8; backdrop-filter: blur(4px);">2023</span>
+          </div>
+        </div>
+        <div class="p-8">
+          <h3 class="text-forest text-xl font-semibold mb-3">Our 2023 Sustainability Report</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed mb-8" style="line-height:1.75;">
+            In 2024, we launched our first annual sustainability report, looking back on 2023 and establishing a roadmap, driving our goals, actions, and results toward tangible change. This roadmap is a dynamic document, regularly reviewed and updated to integrate new insights, address emerging challenges, and capitalise on opportunities.
+          </p>
+          <a href="#" class="btn-ghost text-sm">
+            Download our 2023 report
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v8M4 7l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════ -->
+<section class="relative py-28 lg:py-36 grain overflow-hidden">
+  <div class="absolute inset-0" style="background: #1A3C2B;">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 80% 100% at 20% 50%, rgba(26,60,43,0.6) 0%, transparent 60%), linear-gradient(to right, rgba(18,42,30,0.9) 0%, rgba(18,42,30,0.3) 100%);"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl fade-up">
+      <h2 class="display-xl text-cream mb-6" style="font-size: clamp(2.8rem,6vw,5.5rem);">Let's bring ecology and economy together!</h2>
+      <p class="text-cream/70 font-body text-lg leading-relaxed mb-10" style="line-height: 1.7;">
+        We're here to help. Reach out if you need more information or are ready to get started.
+      </p>
+      <a href="/get-in-touch.html" class="btn-primary text-base px-8 py-4">
+        Get in touch
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     NEWSLETTER
+═══════════════════════════════════════════ -->
+<section class="py-20 lg:py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background: #EDE8DE; border: 1px solid rgba(26,60,43,0.1);">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Stay informed</p>
+          <h2 class="display-md text-forest mb-3">Subscribe to our newsletter</h2>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height: 1.65;">Receive the latest insights on sustainability, ecology, and responsible business growth.</p>
+        </div>
+        <div>
+          <form class="grid sm:grid-cols-2 gap-3">
+            <input type="text" placeholder="First name" class="form-input" />
+            <input type="text" placeholder="Last name" class="form-input" />
+            <input type="text" placeholder="Company name" class="form-input" />
+            <input type="email" placeholder="E-mail address" class="form-input" />
+            <div class="sm:col-span-2">
+              <button type="submit" class="btn-primary w-full justify-center">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer style="background: #122A1E;" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+      <div class="lg:col-span-1">
+        <div class="mb-5">
+          <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="footer-logo">
+        </div>
+        <p class="text-cream/50 font-body text-sm leading-relaxed" style="line-height: 1.7;">
+          Making sustainability self-evident by bringing ecology and economy together.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
+        <ul class="space-y-3">
+          <li><a href="/services.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Our services</a></li>
+          <li><a href="/who-we-are.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Who we are</a></li>
+          <li><a href="/resources.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Resource center</a></li>
+          <li><a href="/accountability.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Accountability</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="mailto:contact@t-ee.eu" class="text-cream/50 font-body text-sm hover:text-cream transition-colors flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0"><path d="M1 3.5A1.5 1.5 0 012.5 2h9A1.5 1.5 0 0113 3.5v7A1.5 1.5 0 0111.5 12h-9A1.5 1.5 0 011 10.5v-7zm1.5-.5a.5.5 0 00-.5.5v.22l5 3.333 5-3.333V3.5a.5.5 0 00-.5-.5h-9zm9.5 2.053l-4.5 3-4.5-3V10.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V5.053z" fill="currentColor"/></svg>
+              contact@t-ee.eu
+            </a>
+          </li>
+          <li>
+            <span class="text-cream/50 font-body text-sm flex items-start gap-2">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0 mt-0.5"><path d="M7 1a5 5 0 00-4.33 7.5L1 13l4.5-1.67A5 5 0 107 1zm0 1a4 4 0 11-3.63 5.69l-.14-.26-.27-.1-2.38.88.88-2.38-.1-.27-.26-.14A4 4 0 017 2z" fill="currentColor"/></svg>
+              Koningin Elisabethlei 16,<br/>2018 Antwerp
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-cream/30 font-body text-xs">© 2026 The Ecological Entrepreneur. All rights reserved.</p>
+      <p class="text-cream/30 font-body text-xs">Making sustainability self-evident.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
