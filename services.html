@@ -192,39 +192,31 @@
     .form-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.12); }
 
     /* ── Service section row ── */
-    .service-row {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 1024px) {
-      .service-row {
-        grid-template-columns: 1fr 1fr;
-        min-height: 520px;
-      }
-    }
-    .service-row-img {
-      position: relative;
-      overflow: hidden;
-      min-height: 320px;
-    }
-    @media (min-width: 1024px) {
-      .service-row-img { min-height: unset; }
-    }
-
     /* ── Service number ── */
     .service-number {
       font-family: 'Readex Pro', sans-serif;
-      font-size: clamp(6rem, 14vw, 12rem);
+      font-size: clamp(5rem, 10vw, 9rem);
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.04em;
       color: rgba(26,60,43,0.06);
       position: absolute;
-      top: -1rem;
-      right: -0.5rem;
+      top: -0.5rem;
+      right: 0;
       pointer-events: none;
       user-select: none;
     }
+    .service-img {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+    .service-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .service-img:hover img { transform: scale(1.03); }
   </style>
 </head>
 
@@ -286,184 +278,165 @@
 </section>
 
 
+
 <!-- ═══════════════════════════════════════════
-     SERVICE SECTIONS (alternating)
+     SERVICE SECTIONS
 ═══════════════════════════════════════════ -->
+<section class="py-20 lg:py-28 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-20 lg:space-y-32">
 
-<!-- Service 1: Image Left -->
-<div class="service-row fade-up">
-  <!-- Image -->
-  <div class="service-row-img">
-    <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Analyse & inzicht" class="w-full h-full object-cover" style="min-height:320px;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(13,35,24,0.15) 0%, rgba(13,35,24,0.6) 100%), linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 50%);"></div>
-    <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
-  </div>
-  <!-- Content -->
-  <div class="bg-white flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 relative overflow-hidden">
-    <span class="service-number">01</span>
-    <div class="relative z-10">
-      <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 01</p>
-      <h2 class="display-sm text-forest mb-5">Analyse &amp; inzicht</h2>
-      <p class="text-gray-500 font-body text-sm leading-relaxed mb-7" style="line-height:1.75;">
-        A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">CO₂</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Social</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">LCA</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">DMA</span>
+    <!-- Service 1: image left -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center fade-up">
+      <div class="service-img shadow-green">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Analyse &amp; inzicht" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent"></div>
+      </div>
+      <div class="relative overflow-hidden">
+        <span class="service-number">01</span>
+        <div class="relative z-10">
+          <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 01</p>
+          <h2 class="display-sm text-forest mb-5">Analyse &amp; inzicht</h2>
+          <p class="text-gray-500 font-body text-sm mb-7" style="line-height:1.75;">A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">CO₂</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Social</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">LCA</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">DMA</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Service 2: Image Right -->
-<div class="service-row fade-up" style="direction: rtl;">
-  <!-- Image -->
-  <div class="service-row-img" style="direction:ltr;">
-    <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Strategie & beleid" class="w-full h-full object-cover" style="min-height:320px;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to left, rgba(13,35,24,0.15) 0%, rgba(13,35,24,0.6) 100%), linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 50%);"></div>
-    <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
-  </div>
-  <!-- Content -->
-  <div class="bg-cream flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 relative overflow-hidden" style="direction:ltr;">
-    <span class="service-number">02</span>
-    <div class="relative z-10">
-      <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 02</p>
-      <h2 class="display-sm text-forest mb-5">Strategie &amp; beleid</h2>
-      <p class="text-gray-500 font-body text-sm leading-relaxed mb-7" style="line-height:1.75;">
-        A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">ESG strategie</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Reductie strategie</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Roadmap ontwikkeling</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Compensatie strategie</span>
+    <!-- Service 2: image right -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center fade-up">
+      <div class="relative overflow-hidden lg:order-1">
+        <span class="service-number">02</span>
+        <div class="relative z-10">
+          <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 02</p>
+          <h2 class="display-sm text-forest mb-5">Strategie &amp; beleid</h2>
+          <p class="text-gray-500 font-body text-sm mb-7" style="line-height:1.75;">A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">ESG strategie</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Reductie strategie</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Roadmap ontwikkeling</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Compensatie strategie</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-img shadow-green lg:order-2">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg" alt="Strategie &amp; beleid" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent"></div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Service 3: Image Left -->
-<div class="service-row fade-up">
-  <div class="service-row-img">
-    <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Rapportering & transparantie" class="w-full h-full object-cover" style="min-height:320px;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(13,35,24,0.15) 0%, rgba(13,35,24,0.6) 100%), linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 50%);"></div>
-    <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
-  </div>
-  <div class="bg-white flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 relative overflow-hidden">
-    <span class="service-number">03</span>
-    <div class="relative z-10">
-      <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 03</p>
-      <h2 class="display-sm text-forest mb-5">Rapportering &amp; transparantie</h2>
-      <p class="text-gray-500 font-body text-sm leading-relaxed mb-7" style="line-height:1.75;">
-        A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">VSME</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">EU taxonomie</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">CSRD</span>
+    <!-- Service 3: image left -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center fade-up">
+      <div class="service-img shadow-green">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Rapportering &amp; transparantie" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent"></div>
+      </div>
+      <div class="relative overflow-hidden">
+        <span class="service-number">03</span>
+        <div class="relative z-10">
+          <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 03</p>
+          <h2 class="display-sm text-forest mb-5">Rapportering &amp; transparantie</h2>
+          <p class="text-gray-500 font-body text-sm mb-7" style="line-height:1.75;">A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">VSME</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">EU taxonomie</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">CSRD</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Service 4: Image Right -->
-<div class="service-row fade-up" style="direction: rtl;">
-  <div class="service-row-img" style="direction:ltr;">
-    <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Certificaten & marktvalidatie" class="w-full h-full object-cover" style="min-height:320px;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to left, rgba(13,35,24,0.15) 0%, rgba(13,35,24,0.6) 100%), linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 50%);"></div>
-    <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
-  </div>
-  <div class="bg-cream flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 relative overflow-hidden" style="direction:ltr;">
-    <span class="service-number">04</span>
-    <div class="relative z-10">
-      <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 04</p>
-      <h2 class="display-sm text-forest mb-5">Certificaten &amp; marktvalidatie</h2>
-      <p class="text-gray-500 font-body text-sm leading-relaxed mb-7" style="line-height:1.75;">
-        A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">EcoVadis</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">SBTi</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Co₂ prestatieladder</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">B-corp</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">ISO</span>
+    <!-- Service 4: image right -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center fade-up">
+      <div class="relative overflow-hidden lg:order-1">
+        <span class="service-number">04</span>
+        <div class="relative z-10">
+          <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 04</p>
+          <h2 class="display-sm text-forest mb-5">Certificaten &amp; marktvalidatie</h2>
+          <p class="text-gray-500 font-body text-sm mb-7" style="line-height:1.75;">A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">EcoVadis</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">SBTi</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Co₂ prestatieladder</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">B-corp</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">ISO</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-img shadow-green lg:order-2">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg" alt="Certificaten &amp; marktvalidatie" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent"></div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Service 5: Image Left -->
-<div class="service-row fade-up">
-  <div class="service-row-img">
-    <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Communicatie & activatie" class="w-full h-full object-cover" style="min-height:320px;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(13,35,24,0.15) 0%, rgba(13,35,24,0.6) 100%), linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 50%);"></div>
-    <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
-  </div>
-  <div class="bg-white flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 relative overflow-hidden">
-    <span class="service-number">05</span>
-    <div class="relative z-10">
-      <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 05</p>
-      <h2 class="display-sm text-forest mb-5">Communicatie &amp; activatie</h2>
-      <p class="text-gray-500 font-body text-sm leading-relaxed mb-7" style="line-height:1.75;">
-        A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Duurzaamheidsnarratief</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Activatie en sensibilisering</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Stakeholderalignering</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Green claims scan</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Marktimpact</span>
+    <!-- Service 5: image left -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center fade-up">
+      <div class="service-img shadow-green">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Communicatie &amp; activatie" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent"></div>
+      </div>
+      <div class="relative overflow-hidden">
+        <span class="service-number">05</span>
+        <div class="relative z-10">
+          <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 05</p>
+          <h2 class="display-sm text-forest mb-5">Communicatie &amp; activatie</h2>
+          <p class="text-gray-500 font-body text-sm mb-7" style="line-height:1.75;">A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Duurzaamheidsnarratief</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Activatie en sensibilisering</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Stakeholderalignering</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Green claims scan</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Marktimpact</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Service 6: Image Right -->
-<div class="service-row fade-up" style="direction: rtl;">
-  <div class="service-row-img" style="direction:ltr;">
-    <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Implementatie & transitie" class="w-full h-full object-cover" style="min-height:320px;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to left, rgba(13,35,24,0.15) 0%, rgba(13,35,24,0.6) 100%), linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 50%);"></div>
-    <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
-  </div>
-  <div class="bg-cream flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 relative overflow-hidden" style="direction:ltr;">
-    <span class="service-number">06</span>
-    <div class="relative z-10">
-      <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 06</p>
-      <h2 class="display-sm text-forest mb-5">Implementatie &amp; transitie</h2>
-      <p class="text-gray-500 font-body text-sm leading-relaxed mb-7" style="line-height:1.75;">
-        A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Carbon invoicing</span>
+    <!-- Service 6: image right -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center fade-up">
+      <div class="relative overflow-hidden lg:order-1">
+        <span class="service-number">06</span>
+        <div class="relative z-10">
+          <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 06</p>
+          <h2 class="display-sm text-forest mb-5">Implementatie &amp; transitie</h2>
+          <p class="text-gray-500 font-body text-sm mb-7" style="line-height:1.75;">A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Carbon invoicing</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-img shadow-green lg:order-2">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg" alt="Implementatie &amp; transitie" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent"></div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Service 7: Image Left -->
-<div class="service-row fade-up">
-  <div class="service-row-img">
-    <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Impact & natuurherstel" class="w-full h-full object-cover" style="min-height:320px;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(13,35,24,0.15) 0%, rgba(13,35,24,0.6) 100%), linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 50%);"></div>
-    <div class="absolute inset-0 mix-blend-multiply" style="background: rgba(26,60,43,0.2);"></div>
-  </div>
-  <div class="bg-white flex flex-col justify-center px-8 py-12 lg:px-14 lg:py-16 relative overflow-hidden">
-    <span class="service-number">07</span>
-    <div class="relative z-10">
-      <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 07</p>
-      <h2 class="display-sm text-forest mb-5">Impact &amp; natuurherstel</h2>
-      <p class="text-gray-500 font-body text-sm leading-relaxed mb-7" style="line-height:1.75;">
-        A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Compensatie project ontwikkeling</span>
-        <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Carbon Credits</span>
+    <!-- Service 7: image left -->
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center fade-up">
+      <div class="service-img shadow-green">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69b0089a3ef04d5c3e88dfdf_default-31.jpeg" alt="Impact &amp; natuurherstel" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest/40 to-transparent"></div>
+      </div>
+      <div class="relative overflow-hidden">
+        <span class="service-number">07</span>
+        <div class="relative z-10">
+          <p class="text-sage font-body text-xs font-semibold tracking-widest uppercase mb-4">Service 07</p>
+          <h2 class="display-sm text-forest mb-5">Impact &amp; natuurherstel</h2>
+          <p class="text-gray-500 font-body text-sm mb-7" style="line-height:1.75;">A robust sustainability strategy is essential for long-term success. We guide your organisation in moving from stand-alone actions to a fully-fledged ESG strategy. By defining clear sustainability goals, exploring future scenarios, and establishing key performance indicators (KPIs), we ensure that your initiatives are integrated into your overall business strategy, delivering both environmental, social and economic benefits.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Compensatie project ontwikkeling</span>
+            <span class="tag" style="background:rgba(45,106,79,0.1); color:#2D6A4F;">Carbon Credits</span>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-</div>
+</section>
 
 
 <!-- ═══════════════════════════════════════════
