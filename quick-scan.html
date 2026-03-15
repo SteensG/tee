@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,474 +8,831 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            forest:  { DEFAULT: '#1A3C2B', light: '#234D38', dark: '#122A1E' },
-            sage:    { DEFAULT: '#2D6A4F', light: '#3D8A67', dark: '#1E4E39' },
-            leaf:    { DEFAULT: '#52B788', light: '#74C69D', dark: '#40916C' },
-            cream:   { DEFAULT: '#F5F0E8', light: '#FAF8F3', dark: '#EAE4D6' },
-            bark:    { DEFAULT: '#8B6B47', light: '#A88054', dark: '#6B5235' },
+            forest: { DEFAULT: '#1A3C2B', light: '#234D38', dark: '#122A1E' },
+            sage: { DEFAULT: '#2D6A4F', light: '#3D8A67', dark: '#1E4E39' },
+            leaf: { DEFAULT: '#52B788', light: '#74C69D', dark: '#40916C' },
+            cream: { DEFAULT: '#F5F0E8', light: '#FAF8F3', dark: '#EAE4D6' },
+            bark: { DEFAULT: '#8B6B47', light: '#A88054', dark: '#6B5235' },
           },
           fontFamily: {
-            body:  ['"Readex Pro"', 'system-ui', 'sans-serif'],
+            body: ['"Readex Pro"', 'system-ui', 'sans-serif'],
             brand: ['"Readex Pro"', 'system-ui', 'sans-serif'],
           },
           letterSpacing: {
             tightest: '-0.04em',
-            tighter:  '-0.02em',
+            tighter: '-0.02em',
           },
         }
       }
     }
   </script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Readex Pro', system-ui, sans-serif;
+      background: #F5F0E8;
+      color: #1C1C1E;
+    }
 
     .grain::after {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 1;
+      pointer-events: none;
+      z-index: 1;
     }
 
-    .display-xl { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.0; letter-spacing: -0.03em; font-weight: 600; }
-    .display-lg { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; font-weight: 600; }
-    .display-md { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; font-weight: 600; }
-    .display-sm { font-family: 'Readex Pro', system-ui, sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; letter-spacing: -0.015em; font-weight: 600; }
+    .display-xl {
+      font-family: 'Readex Pro', system-ui, sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+    }
 
-    .shadow-green { box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12); }
-    .shadow-cream { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+    .display-lg {
+      font-family: 'Readex Pro', system-ui, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      font-weight: 600;
+    }
 
-    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
-    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
-    .nav-logo { height: 36px; width: auto; }
-    .footer-logo { height: 40px; width: auto; }
+    .display-md {
+      font-family: 'Readex Pro', system-ui, sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
 
-    .nav-link { font-size: 0.875rem; font-weight: 400; color: rgba(245,240,232,0.85); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s ease; position: relative; }
-    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #74C69D; transition: width 0.25s ease; }
-    .nav-link:hover { color: #F5F0E8; }
-    .nav-link:hover::after { width: 100%; }
+    .display-sm {
+      font-family: 'Readex Pro', system-ui, sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      font-weight: 600;
+    }
+
+    .shadow-green {
+      box-shadow: 0 1px 2px rgba(26, 60, 43, 0.08), 0 4px 12px rgba(26, 60, 43, 0.10), 0 16px 40px rgba(26, 60, 43, 0.12);
+    }
+
+    .shadow-cream {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06), 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    #nav {
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+    }
+
+    #nav.scrolled {
+      background: rgba(26, 60, 43, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      height: 36px;
+      width: auto;
+    }
+
+    .footer-logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(245, 240, 232, 0.85);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #74C69D;
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: #F5F0E8;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
 
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.875rem 2rem;
-      background: #1A3C2B; color: #F5F0E8;
-      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
-      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.01em;
+      background: #1A3C2B;
+      color: #F5F0E8;
+      border-radius: 100px;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
       border: 1.5px solid transparent;
-      transition: background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
-      cursor: pointer; text-decoration: none; white-space: nowrap;
+      transition: background 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
     }
-    .btn-primary:hover { background: #234D38; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,60,43,0.25); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-primary:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-primary:hover {
+      background: #234D38;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 60, 43, 0.25);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 2px solid #52B788;
+      outline-offset: 3px;
+    }
 
     .btn-outline {
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.875rem 2rem;
-      background: transparent; color: #F5F0E8;
-      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
-      font-size: 0.875rem; font-weight: 500;
-      border: 1.5px solid rgba(245,240,232,0.5);
-      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
-      cursor: pointer; text-decoration: none;
+      background: transparent;
+      color: #F5F0E8;
+      border-radius: 100px;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1.5px solid rgba(245, 240, 232, 0.5);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      text-decoration: none;
     }
-    .btn-outline:hover { border-color: #F5F0E8; background: rgba(245,240,232,0.1); transform: translateY(-2px); }
-    .btn-outline:active { transform: translateY(0); }
-    .btn-outline:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+
+    .btn-outline:hover {
+      border-color: #F5F0E8;
+      background: rgba(245, 240, 232, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline:active {
+      transform: translateY(0);
+    }
+
+    .btn-outline:focus-visible {
+      outline: 2px solid #52B788;
+      outline-offset: 3px;
+    }
 
     .btn-ghost {
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.875rem 2rem;
-      background: transparent; color: #1A3C2B;
-      border-radius: 100px; font-family: 'Readex Pro', sans-serif;
-      font-size: 0.875rem; font-weight: 500;
+      background: transparent;
+      color: #1A3C2B;
+      border-radius: 100px;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
       border: 1.5px solid #1A3C2B;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
-      cursor: pointer; text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      text-decoration: none;
     }
-    .btn-ghost:hover { background: #1A3C2B; color: #F5F0E8; transform: translateY(-2px); }
-    .btn-ghost:active { transform: translateY(0); }
-    .btn-ghost:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
 
-    .service-card { background: white; border-radius: 16px; padding: 2rem; border: 1px solid rgba(26,60,43,0.08); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor: pointer; }
-    .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
-    .service-card:focus-visible { outline: 2px solid #52B788; outline-offset: 3px; }
+    .btn-ghost:hover {
+      background: #1A3C2B;
+      color: #F5F0E8;
+      transform: translateY(-2px);
+    }
 
-    .content-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor: pointer; }
-    .content-card:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.1); }
+    .btn-ghost:active {
+      transform: translateY(0);
+    }
 
-    .marquee-track { display: flex; gap: 4rem; align-items: center; animation: marquee 24s linear infinite; white-space: nowrap; }
-    .marquee-track:hover { animation-play-state: paused; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .btn-ghost:focus-visible {
+      outline: 2px solid #52B788;
+      outline-offset: 3px;
+    }
 
-    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(26, 60, 43, 0.08);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(26, 60, 43, 0.08), 0 16px 40px rgba(26, 60, 43, 0.12);
+    }
+
+    .service-card:focus-visible {
+      outline: 2px solid #52B788;
+      outline-offset: 3px;
+    }
+
+    .content-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .content-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      animation: marquee 24s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .form-input {
-      width: 100%; padding: 0.875rem 1.25rem;
-      background: white; color: #1C1C1E;
-      border: 1.5px solid rgba(26,60,43,0.15); border-radius: 10px;
-      font-family: 'Readex Pro', sans-serif; font-size: 0.875rem;
+      width: 100%;
+      padding: 0.875rem 1.25rem;
+      background: white;
+      color: #1C1C1E;
+      border: 1.5px solid rgba(26, 60, 43, 0.15);
+      border-radius: 10px;
+      font-family: 'Readex Pro', sans-serif;
+      font-size: 0.875rem;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       outline: none;
     }
-    .form-input::placeholder { color: #9CA3AF; }
-    .form-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.12); }
 
-    .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .form-input::placeholder {
+      color: #9CA3AF;
+    }
+
+    .form-input:focus {
+      border-color: #2D6A4F;
+      box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
 
     /* Checklist item */
-    .check-item { display: flex; align-items: flex-start; gap: 0.875rem; }
-    .check-icon { width: 24px; height: 24px; border-radius: 50%; background: rgba(82,183,136,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+    }
+
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(82, 183, 136, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
   </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/brand_assets/1_LOGO/_favicon/PNG/TEE_favicon_color_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/brand_assets/1_LOGO/_favicon/PNG/TEE_favicon_color_16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/brand_assets/1_LOGO/_favicon/PNG/TEE_favicon_color_180x180.png">
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/1_LOGO/_favicon/SVG/TEE_favicon_color.svg">
+  <!-- SEO -->
+  <meta name="description" content="Doe de gratis Sustainability Quick Scan en ontvang binnen minuten uw persoonlijk duurzaamheidsprofiel. De eerste stap naar een gerichte ESG-strategie.">
+  <link rel="canonical" href="https://www.t-ee.eu/quick-scan.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Ecological Entrepreneur">
+  <meta property="og:title" content="Sustainability Quick Scan — The Ecological Entrepreneur">
+  <meta property="og:description" content="Doe de gratis Sustainability Quick Scan en ontvang binnen minuten uw persoonlijk duurzaamheidsprofiel. De eerste stap naar een gerichte ESG-strategie.">
+  <meta property="og:url" content="https://www.t-ee.eu/quick-scan.html">
+  <meta property="og:image" content="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sustainability Quick Scan — The Ecological Entrepreneur">
+  <meta name="twitter:description" content="Doe de gratis Sustainability Quick Scan en ontvang binnen minuten uw persoonlijk duurzaamheidsprofiel. De eerste stap naar een gerichte ESG-strategie.">
+  <meta name="twitter:image" content="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg">
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
-<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <nav class="flex items-center justify-between h-16 lg:h-20">
-      <a href="/index.html" aria-label="The Ecological Entrepreneur — Home">
-        <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="nav-logo">
-      </a>
-      <ul class="hidden lg:flex items-center gap-8">
-        <li><a href="/services.html" class="nav-link">Our services</a></li>
-        <li><a href="/who-we-are.html" class="nav-link">Who we are</a></li>
-        <li><a href="/resources.html" class="nav-link">Resources</a></li>
-        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
-        <li>
-          <a href="#" class="nav-link flex items-center gap-1.5">
-            <span class="text-leaf text-xs">⬡</span> ESGpro
+  <!-- NAVIGATION -->
+  <header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <nav class="flex items-center justify-between h-16 lg:h-20">
+        <a href="/index.html" aria-label="The Ecological Entrepreneur — Home">
+          <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="nav-logo">
+        </a>
+        <ul class="hidden lg:flex items-center gap-8">
+          <li><a href="/services.html" class="nav-link">Our services</a></li>
+          <li><a href="/who-we-are.html" class="nav-link">Who we are</a></li>
+          <li><a href="/resources.html" class="nav-link">Resources</a></li>
+          <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+          <li>
+            <a href="#" class="nav-link flex items-center gap-1.5">
+              <span class="text-leaf text-xs">⬡</span> ESGpro
+            </a>
+          </li>
+        </ul>
+        <div class="flex items-center gap-4">
+          <a href="/get-in-touch.html" class="btn-primary text-sm py-2.5 px-5">Get in touch</a>
+          <button
+            class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf"
+            aria-label="Open menu">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- PAGE HERO -->
+  <section class="relative min-h-[80vh] flex items-center grain overflow-hidden" style="background: #0d2318;">
+    <!-- Radial glow effects -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute"
+        style="width:700px; height:700px; top:50%; left:50%; transform:translate(-60%,-50%); background:radial-gradient(ellipse at center, rgba(82,183,136,0.13) 0%, transparent 65%); border-radius:50%;">
+      </div>
+      <div class="absolute"
+        style="width:400px; height:400px; top:20%; right:10%; background:radial-gradient(ellipse at center, rgba(45,106,79,0.1) 0%, transparent 70%); border-radius:50%;">
+      </div>
+      <div class="absolute"
+        style="width:200px; height:200px; bottom:15%; left:20%; background:radial-gradient(ellipse at center, rgba(82,183,136,0.07) 0%, transparent 70%); border-radius:50%;">
+      </div>
+      <!-- Decorative rings -->
+      <div
+        style="position:absolute; width:600px; height:600px; right:-120px; top:50%; transform:translateY(-50%); border-radius:50%; border:1px solid rgba(82,183,136,0.08);">
+      </div>
+      <div
+        style="position:absolute; width:800px; height:800px; right:-220px; top:50%; transform:translateY(-50%); border-radius:50%; border:1px solid rgba(82,183,136,0.05);">
+      </div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 w-full">
+      <div class="max-w-2xl">
+        <!-- Label + pill badge -->
+        <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-5 fade-up"
+          style="transition-delay:0.1s;">Free tool</p>
+        <div class="mb-6 fade-up" style="transition-delay:0.15s;">
+          <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body text-sm font-semibold"
+            style="background:rgba(82,183,136,0.15); color:#74C69D; border:1px solid rgba(82,183,136,0.25);">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 1l1.545 4.755H13.5l-4.045 2.94 1.545 4.755L7 10.51l-4 2.94 1.545-4.755L.5 5.755H5.455L7 1z"
+                fill="#74C69D" />
+            </svg>
+            Sustainability Quick Scan
+          </span>
+        </div>
+
+        <h1 class="display-lg text-cream mb-6 fade-up" style="transition-delay:0.2s;">Sustainability Quick Scan</h1>
+
+        <p class="text-cream/70 font-body text-lg leading-relaxed mb-10 fade-up"
+          style="transition-delay:0.3s; line-height:1.7;">
+          Every organisation's sustainability journey is different. With our free Sustainability Quick Scan, you'll get
+          a clear picture of your current position and learn which actions can help you make the biggest impact moving
+          forward.
+        </p>
+
+        <div class="fade-up" style="transition-delay:0.4s;">
+          <a href="#" class="btn-primary text-base px-8 py-4">
+            Start Quick Scan
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
           </a>
-        </li>
-      </ul>
-      <div class="flex items-center gap-4">
-        <a href="/get-in-touch.html" class="btn-primary text-sm py-2.5 px-5">Get in touch</a>
-        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf" aria-label="Open menu">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
+        </div>
       </div>
-    </nav>
-  </div>
-</header>
+    </div>
+  </section>
 
 
-<!-- PAGE HERO -->
-<section class="relative min-h-[80vh] flex items-center grain overflow-hidden" style="background: #0d2318;">
-  <!-- Radial glow effects -->
-  <div class="absolute inset-0 pointer-events-none">
-    <div class="absolute" style="width:700px; height:700px; top:50%; left:50%; transform:translate(-60%,-50%); background:radial-gradient(ellipse at center, rgba(82,183,136,0.13) 0%, transparent 65%); border-radius:50%;"></div>
-    <div class="absolute" style="width:400px; height:400px; top:20%; right:10%; background:radial-gradient(ellipse at center, rgba(45,106,79,0.1) 0%, transparent 70%); border-radius:50%;"></div>
-    <div class="absolute" style="width:200px; height:200px; bottom:15%; left:20%; background:radial-gradient(ellipse at center, rgba(82,183,136,0.07) 0%, transparent 70%); border-radius:50%;"></div>
-    <!-- Decorative rings -->
-    <div style="position:absolute; width:600px; height:600px; right:-120px; top:50%; transform:translateY(-50%); border-radius:50%; border:1px solid rgba(82,183,136,0.08);"></div>
-    <div style="position:absolute; width:800px; height:800px; right:-220px; top:50%; transform:translateY(-50%); border-radius:50%; border:1px solid rgba(82,183,136,0.05);"></div>
-  </div>
+  <!-- FROM TODAY'S POSITION TO TOMORROW'S IMPACT -->
+  <section class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 w-full">
-    <div class="max-w-2xl">
-      <!-- Label + pill badge -->
-      <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-5 fade-up" style="transition-delay:0.1s;">Free tool</p>
-      <div class="mb-6 fade-up" style="transition-delay:0.15s;">
-        <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body text-sm font-semibold" style="background:rgba(82,183,136,0.15); color:#74C69D; border:1px solid rgba(82,183,136,0.25);">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.545 4.755H13.5l-4.045 2.94 1.545 4.755L7 10.51l-4 2.94 1.545-4.755L.5 5.755H5.455L7 1z" fill="#74C69D"/></svg>
-          Sustainability Quick Scan
-        </span>
+        <!-- Left: Image -->
+        <div class="fade-up">
+          <div class="relative rounded-2xl overflow-hidden shadow-green" style="aspect-ratio:6/5;">
+            <img src="https://placehold.co/600x500/1A3C2B/F5F0E8" alt="Sustainability impact"
+              class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent"></div>
+            <!-- Color treatment -->
+            <div class="absolute inset-0"
+              style="background:linear-gradient(135deg, rgba(26,60,43,0.2) 0%, transparent 60%); mix-blend-mode:multiply;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="fade-up" style="transition-delay:0.15s;">
+          <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-4">Why now?</p>
+          <h2 class="display-sm text-forest mb-6">From today's position to tomorrow's impact</h2>
+          <p class="text-gray-600 font-body leading-relaxed mb-8" style="line-height:1.75;">
+            The European sustainability landscape is changing rapidly. The recent Omnibus Act on CSRD obligations is
+            still under discussion, but customers, banks and investors continue to set higher expectations in terms of
+            transparency and responsibility. Understanding what truly matters, and where sustainability adds business
+            value, is now key to staying relevant.
+          </p>
+
+          <p class="text-forest font-body text-sm font-semibold uppercase tracking-wider mb-5">With this quick scan,
+            you'll discover:</p>
+
+          <div class="space-y-4">
+            <div class="check-item">
+              <div class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l4 4 6-6" stroke="#52B788" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.7;">Where sustainability
+                creates the most economic and strategic impact</p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l4 4 6-6" stroke="#52B788" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.7;">How to reduce risks,
+                costs and exposure</p>
+            </div>
+            <div class="check-item">
+              <div class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l4 4 6-6" stroke="#52B788" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.7;">The next steps to
+                strengthen your sustainability performance</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHO IS IT FOR? -->
+  <section class="py-20 lg:py-28" style="background:#EDE8DE;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background:#1A3C2B;">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+          <!-- Left -->
+          <div>
+            <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-4">Ideal for</p>
+            <h2 class="display-sm text-cream mb-6">Who is it for?</h2>
+            <p class="text-cream/70 font-body leading-relaxed" style="line-height:1.75;">
+              Ideal for SMEs, corporates and organisations that want to anchor sustainability in their business
+              strategy, starting with a clear, data-driven baseline. Take the free Sustainability Quick Scan now and
+              receive your personal sustainability profile within minutes.
+            </p>
+          </div>
+
+          <!-- Right -->
+          <div class="flex flex-col items-center justify-center text-center gap-4">
+            <a href="#" class="btn-primary text-base px-10 py-4" style="background:#F5F0E8; color:#1A3C2B;">
+              Start Quick Scan
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
+            <p class="text-cream/50 font-body text-sm">Free — takes only a few minutes</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DISCOVER YOUR SUSTAINABILITY PRIORITIES -->
+  <section class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="max-w-2xl mb-12 fade-up">
+        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Assessment areas</p>
+        <h2 class="display-md text-forest mb-5">Discover your sustainability priorities</h2>
+        <p class="text-gray-600 font-body leading-relaxed" style="line-height:1.75;">
+          The Sustainability Quick Scan helps companies assess their current sustainability performance across five core
+          areas:
+        </p>
       </div>
 
-      <h1 class="display-lg text-cream mb-6 fade-up" style="transition-delay:0.2s;">Sustainability Quick Scan</h1>
+      <!-- 5 area cards: 3 on top row, 2 centered on bottom -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
 
-      <p class="text-cream/70 font-body text-lg leading-relaxed mb-10 fade-up" style="transition-delay:0.3s; line-height:1.7;">
-        Every organisation's sustainability journey is different. With our free Sustainability Quick Scan, you'll get a clear picture of your current position and learn which actions can help you make the biggest impact moving forward.
-      </p>
+        <!-- Card 1: CO₂ impact -->
+        <div class="service-card fade-up" tabindex="0" style="transition-delay:0.05s;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+            style="background:rgba(26,60,43,0.08);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 17c0-2.2 1.8-4 4-4 .4 0 .7.05 1.03.14A5 5 0 0117 10a5 5 0 015 5v2H3v-2z" stroke="#2D6A4F"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 3v3M12 6c-1.5 0-3 .5-3 2.5" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 class="text-forest font-semibold text-lg mb-2">CO₂ impact</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Measure and understand
+            your carbon footprint across all business activities and supply chain.</p>
+        </div>
 
-      <div class="fade-up" style="transition-delay:0.4s;">
-        <a href="#" class="btn-primary text-base px-8 py-4">
+        <!-- Card 2: LCA -->
+        <div class="service-card fade-up" tabindex="0" style="transition-delay:0.1s;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+            style="background:rgba(26,60,43,0.08);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+                stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" />
+              <circle cx="12" cy="12" r="4" stroke="#2D6A4F" stroke-width="1.5" />
+            </svg>
+          </div>
+          <h3 class="text-forest font-semibold text-lg mb-2">Life Cycle Assessment (LCA)</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Evaluate the full
+            environmental impact of your products and services from cradle to grave.</p>
+        </div>
+
+        <!-- Card 3: Reporting -->
+        <div class="service-card fade-up" tabindex="0" style="transition-delay:0.15s;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+            style="background:rgba(26,60,43,0.08);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="text-forest font-semibold text-lg mb-2">Reporting (VSME)</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Assess your readiness for
+            sustainability reporting under the VSME standard and beyond.</p>
+        </div>
+
+      </div>
+
+      <!-- Bottom 2 cards — centered -->
+      <div class="grid sm:grid-cols-2 gap-4 lg:w-2/3 lg:mx-auto mb-12">
+
+        <!-- Card 4: Social impact -->
+        <div class="service-card fade-up" tabindex="0" style="transition-delay:0.2s;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+            style="background:rgba(26,60,43,0.08);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#2D6A4F" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="9" cy="7" r="4" stroke="#2D6A4F" stroke-width="1.5" />
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#2D6A4F" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="text-forest font-semibold text-lg mb-2">Social impact analysis</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Understand your
+            organisation's social footprint: employees, communities, and supply chain partners.</p>
+        </div>
+
+        <!-- Card 5: EcoVadis -->
+        <div class="service-card fade-up" tabindex="0" style="transition-delay:0.25s;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+            style="background:rgba(26,60,43,0.08);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17.4l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" stroke="#2D6A4F"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="text-forest font-semibold text-lg mb-2">EcoVadis certification</h3>
+          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Gauge your current
+            EcoVadis readiness and identify which areas need attention before certification.</p>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center fade-up">
+        <a href="#" class="btn-primary text-base px-10 py-4">
           Start Quick Scan
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="relative py-28 lg:py-36 grain overflow-hidden" style="background:#1A3C2B;">
+    <div class="absolute inset-0 pointer-events-none"
+      style="background:radial-gradient(ellipse 80% 100% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div class="max-w-3xl mx-auto fade-up">
+        <h2 class="display-md text-cream mb-6">Let's bring ecology and economy together!</h2>
+        <p class="text-cream/70 font-body text-lg leading-relaxed mb-10" style="line-height:1.7;">
+          We're here to help. Reach out if you need more information or are ready to get started.
+        </p>
+        <a href="/get-in-touch.html" class="btn-primary text-base px-8 py-4">
+          Get in touch
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
         </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- FROM TODAY'S POSITION TO TOMORROW'S IMPACT -->
-<section class="py-20 lg:py-28 bg-cream">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-      <!-- Left: Image -->
-      <div class="fade-up">
-        <div class="relative rounded-2xl overflow-hidden shadow-green" style="aspect-ratio:6/5;">
-          <img src="https://placehold.co/600x500/1A3C2B/F5F0E8" alt="Sustainability impact" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent"></div>
-          <!-- Color treatment -->
-          <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(26,60,43,0.2) 0%, transparent 60%); mix-blend-mode:multiply;"></div>
-        </div>
-      </div>
-
-      <!-- Right: Content -->
-      <div class="fade-up" style="transition-delay:0.15s;">
-        <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-4">Why now?</p>
-        <h2 class="display-sm text-forest mb-6">From today's position to tomorrow's impact</h2>
-        <p class="text-gray-600 font-body leading-relaxed mb-8" style="line-height:1.75;">
-          The European sustainability landscape is changing rapidly. The recent Omnibus Act on CSRD obligations is still under discussion, but customers, banks and investors continue to set higher expectations in terms of transparency and responsibility. Understanding what truly matters, and where sustainability adds business value, is now key to staying relevant.
-        </p>
-
-        <p class="text-forest font-body text-sm font-semibold uppercase tracking-wider mb-5">With this quick scan, you'll discover:</p>
-
-        <div class="space-y-4">
-          <div class="check-item">
-            <div class="check-icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#52B788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.7;">Where sustainability creates the most economic and strategic impact</p>
+  <!-- NEWSLETTER -->
+  <section class="py-20 lg:py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background: #EDE8DE; border: 1px solid rgba(26,60,43,0.1);">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Stay informed</p>
+            <h2 class="display-md text-forest mb-3">Subscribe to our newsletter</h2>
+            <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height: 1.65;">Receive the latest
+              insights on sustainability, ecology, and responsible business growth.</p>
           </div>
-          <div class="check-item">
-            <div class="check-icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#52B788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.7;">How to reduce risks, costs and exposure</p>
-          </div>
-          <div class="check-item">
-            <div class="check-icon">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#52B788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <p class="text-gray-600 font-body text-sm leading-relaxed" style="line-height:1.7;">The next steps to strengthen your sustainability performance</p>
+          <div>
+            <form class="grid sm:grid-cols-2 gap-3">
+              <input type="text" placeholder="First name" class="form-input" />
+              <input type="text" placeholder="Last name" class="form-input" />
+              <input type="text" placeholder="Company name" class="form-input" />
+              <input type="email" placeholder="E-mail address" class="form-input" />
+              <div class="sm:col-span-2">
+                <button type="submit" class="btn-primary w-full justify-center">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- WHO IS IT FOR? -->
-<section class="py-20 lg:py-28" style="background:#EDE8DE;">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background:#1A3C2B;">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
-
-        <!-- Left -->
-        <div>
-          <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-4">Ideal for</p>
-          <h2 class="display-sm text-cream mb-6">Who is it for?</h2>
-          <p class="text-cream/70 font-body leading-relaxed" style="line-height:1.75;">
-            Ideal for SMEs, corporates and organisations that want to anchor sustainability in their business strategy, starting with a clear, data-driven baseline. Take the free Sustainability Quick Scan now and receive your personal sustainability profile within minutes.
-          </p>
-        </div>
-
-        <!-- Right -->
-        <div class="flex flex-col items-center justify-center text-center gap-4">
-          <a href="#" class="btn-primary text-base px-10 py-4" style="background:#F5F0E8; color:#1A3C2B;">
-            Start Quick Scan
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <p class="text-cream/50 font-body text-sm">Free — takes only a few minutes</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- DISCOVER YOUR SUSTAINABILITY PRIORITIES -->
-<section class="py-20 lg:py-28 bg-cream">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-    <div class="max-w-2xl mb-12 fade-up">
-      <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Assessment areas</p>
-      <h2 class="display-md text-forest mb-5">Discover your sustainability priorities</h2>
-      <p class="text-gray-600 font-body leading-relaxed" style="line-height:1.75;">
-        The Sustainability Quick Scan helps companies assess their current sustainability performance across five core areas:
-      </p>
-    </div>
-
-    <!-- 5 area cards: 3 on top row, 2 centered on bottom -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-
-      <!-- Card 1: CO₂ impact -->
-      <div class="service-card fade-up" tabindex="0" style="transition-delay:0.05s;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(26,60,43,0.08);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 17c0-2.2 1.8-4 4-4 .4 0 .7.05 1.03.14A5 5 0 0117 10a5 5 0 015 5v2H3v-2z" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3v3M12 6c-1.5 0-3 .5-3 2.5" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <h3 class="text-forest font-semibold text-lg mb-2">CO₂ impact</h3>
-        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Measure and understand your carbon footprint across all business activities and supply chain.</p>
-      </div>
-
-      <!-- Card 2: LCA -->
-      <div class="service-card fade-up" tabindex="0" style="transition-delay:0.1s;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(26,60,43,0.08);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#2D6A4F" stroke-width="1.5"/></svg>
-        </div>
-        <h3 class="text-forest font-semibold text-lg mb-2">Life Cycle Assessment (LCA)</h3>
-        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Evaluate the full environmental impact of your products and services from cradle to grave.</p>
-      </div>
-
-      <!-- Card 3: Reporting -->
-      <div class="service-card fade-up" tabindex="0" style="transition-delay:0.15s;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(26,60,43,0.08);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 class="text-forest font-semibold text-lg mb-2">Reporting (VSME)</h3>
-        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Assess your readiness for sustainability reporting under the VSME standard and beyond.</p>
-      </div>
-
-    </div>
-
-    <!-- Bottom 2 cards — centered -->
-    <div class="grid sm:grid-cols-2 gap-4 lg:w-2/3 lg:mx-auto mb-12">
-
-      <!-- Card 4: Social impact -->
-      <div class="service-card fade-up" tabindex="0" style="transition-delay:0.2s;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(26,60,43,0.08);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="#2D6A4F" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 class="text-forest font-semibold text-lg mb-2">Social impact analysis</h3>
-        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Understand your organisation's social footprint: employees, communities, and supply chain partners.</p>
-      </div>
-
-      <!-- Card 5: EcoVadis -->
-      <div class="service-card fade-up" tabindex="0" style="transition-delay:0.25s;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(26,60,43,0.08);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17.4l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 class="text-forest font-semibold text-lg mb-2">EcoVadis certification</h3>
-        <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height:1.65;">Gauge your current EcoVadis readiness and identify which areas need attention before certification.</p>
-      </div>
-
-    </div>
-
-    <!-- CTA -->
-    <div class="text-center fade-up">
-      <a href="#" class="btn-primary text-base px-10 py-4">
-        Start Quick Scan
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- CTA -->
-<section class="relative py-28 lg:py-36 grain overflow-hidden" style="background:#1A3C2B;">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 100% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-    <div class="max-w-3xl mx-auto fade-up">
-      <h2 class="display-md text-cream mb-6">Let's bring ecology and economy together!</h2>
-      <p class="text-cream/70 font-body text-lg leading-relaxed mb-10" style="line-height:1.7;">
-        We're here to help. Reach out if you need more information or are ready to get started.
-      </p>
-      <a href="/get-in-touch.html" class="btn-primary text-base px-8 py-4">
-        Get in touch
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- NEWSLETTER -->
-<section class="py-20 lg:py-24 bg-cream">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background: #EDE8DE; border: 1px solid rgba(26,60,43,0.1);">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Stay informed</p>
-          <h2 class="display-md text-forest mb-3">Subscribe to our newsletter</h2>
-          <p class="text-gray-500 font-body text-sm leading-relaxed" style="line-height: 1.65;">Receive the latest insights on sustainability, ecology, and responsible business growth.</p>
+  <!-- FOOTER -->
+  <footer style="background: #122A1E;" class="pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+        <div class="lg:col-span-1">
+          <div class="mb-5">
+            <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur"
+              class="footer-logo">
+          </div>
+          <p class="text-cream/50 font-body text-sm leading-relaxed" style="line-height: 1.7;">Making sustainability
+            self-evident by bringing ecology and economy together.</p>
         </div>
         <div>
-          <form class="grid sm:grid-cols-2 gap-3">
-            <input type="text" placeholder="First name" class="form-input" />
-            <input type="text" placeholder="Last name" class="form-input" />
-            <input type="text" placeholder="Company name" class="form-input" />
-            <input type="email" placeholder="E-mail address" class="form-input" />
-            <div class="sm:col-span-2">
-              <button type="submit" class="btn-primary w-full justify-center">Submit</button>
-            </div>
-          </form>
+          <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
+          <ul class="space-y-3">
+            <li><a href="/services.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Our
+                services</a></li>
+            <li><a href="/who-we-are.html"
+                class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Who we are</a></li>
+            <li><a href="/resources.html"
+                class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Resource center</a></li>
+            <li><a href="/accountability.html"
+                class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Accountability</a></li>
+            <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Academy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="mailto:contact@t-ee.eu"
+                class="text-cream/50 font-body text-sm hover:text-cream transition-colors flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0">
+                  <path
+                    d="M1 3.5A1.5 1.5 0 012.5 2h9A1.5 1.5 0 0113 3.5v7A1.5 1.5 0 0111.5 12h-9A1.5 1.5 0 011 10.5v-7zm1.5-.5a.5.5 0 00-.5.5v.22l5 3.333 5-3.333V3.5a.5.5 0 00-.5-.5h-9zm9.5 2.053l-4.5 3-4.5-3V10.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V5.053z"
+                    fill="currentColor" />
+                </svg>
+                contact@t-ee.eu
+              </a>
+            </li>
+            <li>
+              <span class="text-cream/50 font-body text-sm flex items-start gap-2">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0 mt-0.5">
+                  <path
+                    d="M7 1a5 5 0 00-4.33 7.5L1 13l4.5-1.67A5 5 0 107 1zm0 1a4 4 0 11-3.63 5.69l-.14-.26-.27-.1-2.38.88.88-2.38-.1-.27-.26-.14A4 4 0 017 2z"
+                    fill="currentColor" />
+                </svg>
+                Koningin Elisabethlei 16,<br />2018 Antwerp
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Privacy
+                Policy</a></li>
+            <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Terms &amp;
+                Conditions</a></li>
+            <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Cookie Policy</a>
+            </li>
+            <li><a href="#"
+                class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer style="background: #122A1E;" class="pt-16 pb-8">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
-      <div class="lg:col-span-1">
-        <div class="mb-5">
-          <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" class="footer-logo">
-        </div>
-        <p class="text-cream/50 font-body text-sm leading-relaxed" style="line-height: 1.7;">Making sustainability self-evident by bringing ecology and economy together.</p>
-      </div>
-      <div>
-        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
-        <ul class="space-y-3">
-          <li><a href="/services.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Our services</a></li>
-          <li><a href="/who-we-are.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Who we are</a></li>
-          <li><a href="/resources.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Resource center</a></li>
-          <li><a href="/accountability.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Accountability</a></li>
-          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Academy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
-        <ul class="space-y-3">
-          <li>
-            <a href="mailto:contact@t-ee.eu" class="text-cream/50 font-body text-sm hover:text-cream transition-colors flex items-center gap-2">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0"><path d="M1 3.5A1.5 1.5 0 012.5 2h9A1.5 1.5 0 0113 3.5v7A1.5 1.5 0 0111.5 12h-9A1.5 1.5 0 011 10.5v-7zm1.5-.5a.5.5 0 00-.5.5v.22l5 3.333 5-3.333V3.5a.5.5 0 00-.5-.5h-9zm9.5 2.053l-4.5 3-4.5-3V10.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V5.053z" fill="currentColor"/></svg>
-              contact@t-ee.eu
-            </a>
-          </li>
-          <li>
-            <span class="text-cream/50 font-body text-sm flex items-start gap-2">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0 mt-0.5"><path d="M7 1a5 5 0 00-4.33 7.5L1 13l4.5-1.67A5 5 0 107 1zm0 1a4 4 0 11-3.63 5.69l-.14-.26-.27-.1-2.38.88.88-2.38-.1-.27-.26-.14A4 4 0 017 2z" fill="currentColor"/></svg>
-              Koningin Elisabethlei 16,<br/>2018 Antwerp
-            </span>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
-        <ul class="space-y-3">
-          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Privacy Policy</a></li>
-          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Terms &amp; Conditions</a></li>
-          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Cookie Policy</a></li>
-          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
-        </ul>
+      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-cream/30 font-body text-xs">© 2026 The Ecological Entrepreneur. All rights reserved.</p>
+        <p class="text-cream/30 font-body text-xs">Making sustainability self-evident.</p>
       </div>
     </div>
-    <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-cream/30 font-body text-xs">© 2026 The Ecological Entrepreneur. All rights reserved.</p>
-      <p class="text-cream/30 font-body text-xs">Making sustainability self-evident.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 
-<script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('visible'); observer.unobserve(entry.target);} });
-  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
+
 </html>
