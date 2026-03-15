@@ -3,179 +3,179 @@
 
   <!-- Main pages -->
   <url>
-    <loc>https://www.t-ee.eu/</loc>
+    <loc>https://tee-zeta.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services.html</loc>
+    <loc>https://tee-zeta.vercel.app/services.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/who-we-are.html</loc>
+    <loc>https://tee-zeta.vercel.app/who-we-are.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/resources.html</loc>
+    <loc>https://tee-zeta.vercel.app/resources.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/accountability.html</loc>
+    <loc>https://tee-zeta.vercel.app/accountability.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/quick-scan.html</loc>
+    <loc>https://tee-zeta.vercel.app/quick-scan.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/get-in-touch.html</loc>
+    <loc>https://tee-zeta.vercel.app/get-in-touch.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/join-the-team.html</loc>
+    <loc>https://tee-zeta.vercel.app/join-the-team.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/reports.html</loc>
+    <loc>https://tee-zeta.vercel.app/reports.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/artikel.html</loc>
+    <loc>https://tee-zeta.vercel.app/artikel.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/case.html</loc>
+    <loc>https://tee-zeta.vercel.app/case.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Service detail pages -->
   <url>
-    <loc>https://www.t-ee.eu/services/co2.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/co2.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/social.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/social.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/lca.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/lca.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/dma.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/dma.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/esg-strategie.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/esg-strategie.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/reductie-strategie.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/reductie-strategie.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/roadmap-ontwikkeling.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/roadmap-ontwikkeling.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/compensatie-strategie.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/compensatie-strategie.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/vsme.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/vsme.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/eu-taxonomie.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/eu-taxonomie.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/csrd.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/csrd.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/ecovadis.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/ecovadis.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/sbti.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/sbti.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/co2-prestatieladder.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/co2-prestatieladder.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/b-corp.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/b-corp.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/iso.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/iso.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/duurzaamheidsnarratief.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/duurzaamheidsnarratief.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/activatie-en-sensibilisering.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/activatie-en-sensibilisering.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/stakeholderalignering.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/stakeholderalignering.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/green-claims-scan.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/green-claims-scan.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/marktimpact.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/marktimpact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/carbon-invoicing.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/carbon-invoicing.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/compensatie-project-ontwikkeling.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/compensatie-project-ontwikkeling.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.t-ee.eu/services/carbon-credits.html</loc>
+    <loc>https://tee-zeta.vercel.app/services/carbon-credits.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
