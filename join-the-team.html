@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carbon Footprint Consultant — Join the Team — The Ecological Entrepreneur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          forest: { DEFAULT:'#1A3C2B', light:'#234D38', dark:'#122A1E' },
+          sage:   { DEFAULT:'#2D6A4F', light:'#3D8A67', dark:'#1E4E39' },
+          leaf:   { DEFAULT:'#52B788', light:'#74C69D', dark:'#40916C' },
+          cream:  { DEFAULT:'#F5F0E8', light:'#FAF8F3', dark:'#EAE4D6' },
+          bark:   { DEFAULT:'#8B6B47', light:'#A88054', dark:'#6B5235' },
+        },
+        fontFamily: { body:['"Readex Pro"','system-ui','sans-serif'], brand:['"Readex Pro"','system-ui','sans-serif'] },
+      }}
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+    .grain::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1; }
+    .display-xl { font-family:'Readex Pro',sans-serif; font-size:clamp(3.5rem,8vw,7rem); line-height:1.0; letter-spacing:-0.03em; font-weight:600; }
+    .display-lg { font-family:'Readex Pro',sans-serif; font-size:clamp(2.5rem,5vw,4.5rem); line-height:1.05; letter-spacing:-0.025em; font-weight:600; }
+    .display-md { font-family:'Readex Pro',sans-serif; font-size:clamp(1.8rem,3.5vw,3rem); line-height:1.1; letter-spacing:-0.02em; font-weight:600; }
+    .display-sm { font-family:'Readex Pro',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); line-height:1.2; letter-spacing:-0.015em; font-weight:600; }
+    .shadow-green { box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12); }
+    .shadow-cream { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
+    .nav-link { font-size:0.875rem; font-weight:400; color:rgba(245,240,232,0.85); text-decoration:none; letter-spacing:0.01em; transition:color 0.2s ease; position:relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#74C69D; transition:width 0.25s ease; }
+    .nav-link:hover { color:#F5F0E8; }
+    .nav-link:hover::after { width:100%; }
+    .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:#1A3C2B; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; letter-spacing:0.01em; border:1.5px solid transparent; transition:background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; text-decoration:none; white-space:nowrap; }
+    .btn-primary:hover { background:#234D38; transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,60,43,0.25); }
+    .btn-primary:active { transform:translateY(0); }
+    .btn-primary:focus-visible { outline:2px solid #52B788; outline-offset:3px; }
+    .btn-outline { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid rgba(245,240,232,0.5); transition:border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-outline:hover { border-color:#F5F0E8; background:rgba(245,240,232,0.1); transform:translateY(-2px); }
+    .btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#1A3C2B; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid #1A3C2B; transition:background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-ghost:hover { background:#1A3C2B; color:#F5F0E8; transform:translateY(-2px); }
+    .service-card { background:white; border-radius:16px; padding:2rem; border:1px solid rgba(26,60,43,0.08); transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; }
+    .service-card:hover { transform:translateY(-4px); box-shadow:0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+    .content-card { background:white; border-radius:16px; overflow:hidden; border:1px solid rgba(0,0,0,0.06); transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; }
+    .content-card:hover { transform:translateY(-4px); box-shadow:0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.1); }
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .form-input { width:100%; padding:0.875rem 1.25rem; background:white; color:#1C1C1E; border:1.5px solid rgba(26,60,43,0.15); border-radius:10px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; transition:border-color 0.2s ease, box-shadow 0.2s ease; outline:none; }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-input:focus { border-color:#2D6A4F; box-shadow:0 0 0 3px rgba(45,106,79,0.12); }
+    .tag { display:inline-block; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.7rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+    details summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:1rem 0; border-bottom:1px solid rgba(26,60,43,0.1); font-weight:500; color:#1A3C2B; }
+    details summary::-webkit-details-marker { display:none; }
+    details[open] summary { color:#2D6A4F; }
+    details .details-body { padding:1rem 0 1.5rem; color:#6B7280; font-size:0.875rem; line-height:1.75; }
+    .summary-icon { width:20px; height:20px; flex-shrink:0; transition:transform 0.2s ease; }
+    details[open] .summary-icon { transform:rotate(45deg); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/index.html"><img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:36px;width:auto;"></a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="/services.html" class="nav-link">Our services</a></li>
+        <li><a href="/who-we-are.html" class="nav-link">Who we are</a></li>
+        <li><a href="/resources.html" class="nav-link">Resources</a></li>
+        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+        <li><a href="#" class="nav-link flex items-center gap-1.5"><span style="color:#52B788;font-size:0.75rem;">⬡</span> ESGpro</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="/get-in-touch.html" class="btn-primary" style="font-size:0.875rem;padding:0.625rem 1.25rem;">Get in touch</a>
+        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative grain overflow-hidden pt-32 pb-20 lg:pb-24" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 70% at 30% 50%, rgba(82,183,136,0.10) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 mb-6 fade-up">
+      <a href="/who-we-are.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Join the team</a>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-cream/50 font-body text-sm">Open positions</span>
+    </div>
+    <!-- Tag -->
+    <div class="mb-5 fade-up">
+      <span class="tag" style="background:rgba(82,183,136,0.15); color:#74C69D;">Fulltime · Antwerp</span>
+    </div>
+    <!-- Heading -->
+    <h1 class="display-lg text-cream mb-4 fade-up" style="max-width:700px;">Carbon Footprint Consultant</h1>
+    <!-- Date -->
+    <p class="font-body text-sm fade-up" style="color:rgba(245,240,232,0.5);">12 January 2026</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- LEFT COLUMN -->
+      <div class="lg:col-span-8 fade-up">
+
+        <!-- Metadata strip -->
+        <div class="flex flex-wrap gap-0 mb-10 rounded-xl overflow-hidden border border-forest/10" style="background:white;">
+          <div class="flex-1 px-6 py-4 border-r border-forest/10">
+            <p class="font-body text-xs font-medium tracking-widest uppercase mb-1" style="color:#9CA3AF;">Domain</p>
+            <p class="font-body text-sm font-600 text-forest" style="font-weight:500;">Sustainability</p>
+          </div>
+          <div class="flex-1 px-6 py-4 border-r border-forest/10">
+            <p class="font-body text-xs font-medium tracking-widest uppercase mb-1" style="color:#9CA3AF;">Type</p>
+            <p class="font-body text-sm font-600 text-forest" style="font-weight:500;">Fulltime</p>
+          </div>
+          <div class="flex-1 px-6 py-4 border-r border-forest/10">
+            <p class="font-body text-xs font-medium tracking-widest uppercase mb-1" style="color:#9CA3AF;">Location</p>
+            <p class="font-body text-sm font-600 text-forest" style="font-weight:500;">Antwerp</p>
+          </div>
+          <div class="flex-1 px-6 py-4">
+            <p class="font-body text-xs font-medium tracking-widest uppercase mb-1" style="color:#9CA3AF;">Posted</p>
+            <p class="font-body text-sm font-600 text-forest" style="font-weight:500;">12 January 2026</p>
+          </div>
+        </div>
+
+        <!-- Intro -->
+        <p class="font-body mb-6" style="font-size:1rem; line-height:1.75; color:#374151;">
+          Would you like to contribute to sustainability and make a difference in the transition to more sustainable business practices? As a Carbon Consultant, you will conduct detailed CO₂ analyses and contribute to the development of net zero strategies for various organisations. Are you ready to guide companies towards a greener future? If so, we'd love to meet you!
+        </p>
+        <p class="font-body mb-10" style="font-size:1rem; line-height:1.75; color:#374151;">
+          We are seeking energetic and motivated colleagues to play a crucial role in reducing our clients' carbon footprints. You will daily perform key roles in conducting detailed CO₂ analyses and developing various reduction and offset scenarios under the guidance of a Sustainability Consultant. Your expertise will help companies identify opportunities for CO₂ reduction and support them in transitioning to more sustainable operations. You are precise, experienced in managing multiple projects simultaneously, and continually supported in your personal and professional development to enhance your competencies and skills.
+        </p>
+
+        <!-- Accordion sections -->
+        <div class="mb-10">
+          <details class="mb-2">
+            <summary>
+              <span class="font-body text-base" style="font-weight:500;">Your Role</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">
+              You will conduct CO₂ analyses, develop net-zero strategies, support clients in sustainability transitions, and collaborate with our team of consultants on impactful projects across Belgium and beyond.
+            </div>
+          </details>
+
+          <details class="mb-2">
+            <summary>
+              <span class="font-body text-base" style="font-weight:500;">Why are you a good fit?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">
+              You have a strong interest in sustainability and carbon management. You are analytical, detail-oriented, and comfortable working with data. You communicate clearly and can translate complex concepts for clients. Experience with CO₂ reporting tools is a plus.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="font-body text-base" style="font-weight:500;">Why are we a good fit?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">
+              We offer a dynamic, purpose-driven work environment where your contributions directly reduce carbon footprints across industries. You'll grow fast, work with a passionate team, and make real impact from day one.
+            </div>
+          </details>
+        </div>
+
+        <!-- Apply CTA -->
+        <a href="mailto:marit.overbeeke@t-ee.eu" class="btn-primary">
+          Apply via marit.overbeeke@t-ee.eu
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- RIGHT COLUMN (sticky sidebar) -->
+      <div class="lg:col-span-4">
+        <div class="sticky top-28 rounded-2xl p-8 fade-up" style="background:#1A3C2B;">
+          <h3 class="display-sm text-cream mb-3">Interested?</h3>
+          <p class="font-body text-sm mb-4" style="color:rgba(245,240,232,0.65); line-height:1.7;">
+            Send your CV and motivation to Marit. We look forward to hearing from you.
+          </p>
+          <a href="mailto:marit.overbeeke@t-ee.eu" class="font-body text-base font-medium block mb-6" style="color:#74C69D; word-break:break-all;">
+            marit.overbeeke@t-ee.eu
+          </a>
+          <a href="mailto:marit.overbeeke@t-ee.eu" class="btn-outline w-full justify-center">Send application</a>
+
+          <div class="my-6" style="border-top:1px solid rgba(245,240,232,0.12);"></div>
+
+          <h4 class="font-body text-xs font-semibold tracking-widest uppercase mb-4" style="color:rgba(245,240,232,0.5);">Other open positions</h4>
+          <ul class="space-y-3 mb-6">
+            <li>
+              <a href="#" class="font-body text-sm flex items-center gap-1.5 transition-colors" style="color:rgba(245,240,232,0.7);" onmouseover="this.style.color='#74C69D'" onmouseout="this.style.color='rgba(245,240,232,0.7)'">
+                Sustainability Consultant
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="font-body text-sm flex items-center gap-1.5 transition-colors" style="color:rgba(245,240,232,0.7);" onmouseover="this.style.color='#74C69D'" onmouseout="this.style.color='rgba(245,240,232,0.7)'">
+                Browse all positions
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </li>
+          </ul>
+
+          <p class="font-body text-xs" style="color:rgba(245,240,232,0.4);">
+            Questions? Contact us at <a href="mailto:contact@t-ee.eu" style="color:rgba(245,240,232,0.6);">contact@t-ee.eu</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="relative py-24 lg:py-32 grain overflow-hidden" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center fade-up">
+    <p class="text-leaf font-body text-sm font-medium tracking-widest uppercase mb-4">Work with us</p>
+    <h2 class="display-md text-cream mb-6">Let's bring ecology and economy together!</h2>
+    <p class="text-cream/70 font-body text-lg mb-10" style="line-height:1.7;">We're here to help. Reach out if you need more information or are ready to get started.</p>
+    <a href="/get-in-touch.html" class="btn-primary">Get in touch <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-20 lg:py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background:#EDE8DE; border:1px solid rgba(26,60,43,0.1);">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sage font-body text-sm font-medium tracking-widest uppercase mb-3">Stay informed</p>
+          <h2 class="display-md text-forest mb-3">Subscribe to our newsletter</h2>
+          <p class="text-gray-500 font-body text-sm" style="line-height:1.65;">Receive the latest insights on sustainability, ecology, and responsible business growth.</p>
+        </div>
+        <form class="grid sm:grid-cols-2 gap-3">
+          <input type="text" placeholder="First name" class="form-input" />
+          <input type="text" placeholder="Last name" class="form-input" />
+          <input type="text" placeholder="Company name" class="form-input" />
+          <input type="email" placeholder="E-mail address" class="form-input" />
+          <div class="sm:col-span-2"><button type="submit" class="btn-primary w-full justify-center">Submit</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#122A1E;" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+      <div class="lg:col-span-1">
+        <div class="mb-5"><img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:40px;width:auto;"></div>
+        <p class="text-cream/50 font-body text-sm" style="line-height:1.7;">Making sustainability self-evident by bringing ecology and economy together.</p>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
+        <ul class="space-y-3">
+          <li><a href="/services.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Our services</a></li>
+          <li><a href="/who-we-are.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Who we are</a></li>
+          <li><a href="/resources.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Resource center</a></li>
+          <li><a href="/accountability.html" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Accountability</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
+        <ul class="space-y-3">
+          <li><a href="mailto:contact@t-ee.eu" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">contact@t-ee.eu</a></li>
+          <li><span class="text-cream/50 font-body text-sm">Koningin Elisabethlei 16,<br/>2018 Antwerp</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 font-body text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="text-cream/50 font-body text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style="border-top:1px solid rgba(255,255,255,0.08);">
+      <p class="text-cream/30 font-body text-xs">© 2026 The Ecological Entrepreneur. All rights reserved.</p>
+      <p class="text-cream/30 font-body text-xs">Making sustainability self-evident.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

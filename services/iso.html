@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ISO Certificering (14001/26000/50001) — The Ecological Entrepreneur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          forest: { DEFAULT:'#1A3C2B', light:'#234D38', dark:'#122A1E' },
+          sage:   { DEFAULT:'#2D6A4F', light:'#3D8A67', dark:'#1E4E39' },
+          leaf:   { DEFAULT:'#52B788', light:'#74C69D', dark:'#40916C' },
+          cream:  { DEFAULT:'#F5F0E8', light:'#FAF8F3', dark:'#EAE4D6' },
+          bark:   { DEFAULT:'#8B6B47', light:'#A88054', dark:'#6B5235' },
+        },
+        fontFamily: { body:['"Readex Pro"','system-ui','sans-serif'] },
+      }}
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+    .grain::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1; }
+    .display-xl { font-family:'Readex Pro',sans-serif; font-size:clamp(3.5rem,8vw,7rem); line-height:1.0; letter-spacing:-0.03em; font-weight:600; }
+    .display-lg { font-family:'Readex Pro',sans-serif; font-size:clamp(2.5rem,5vw,4.5rem); line-height:1.05; letter-spacing:-0.025em; font-weight:600; }
+    .display-md { font-family:'Readex Pro',sans-serif; font-size:clamp(1.8rem,3.5vw,3rem); line-height:1.1; letter-spacing:-0.02em; font-weight:600; }
+    .display-sm { font-family:'Readex Pro',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); line-height:1.2; letter-spacing:-0.015em; font-weight:600; }
+    .shadow-green { box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12); }
+    .shadow-cream { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
+    .nav-link { font-size:0.875rem; font-weight:400; color:rgba(245,240,232,0.85); text-decoration:none; letter-spacing:0.01em; transition:color 0.2s ease; position:relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#74C69D; transition:width 0.25s ease; }
+    .nav-link:hover { color:#F5F0E8; }
+    .nav-link:hover::after { width:100%; }
+    .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:#1A3C2B; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; letter-spacing:0.01em; border:1.5px solid transparent; transition:background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; text-decoration:none; white-space:nowrap; }
+    .btn-primary:hover { background:#234D38; transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,60,43,0.25); }
+    .btn-primary:active { transform:translateY(0); }
+    .btn-primary:focus-visible { outline:2px solid #52B788; outline-offset:3px; }
+    .btn-outline { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid rgba(245,240,232,0.5); transition:border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-outline:hover { border-color:#F5F0E8; background:rgba(245,240,232,0.1); transform:translateY(-2px); }
+    .btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#1A3C2B; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid #1A3C2B; transition:background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-ghost:hover { background:#1A3C2B; color:#F5F0E8; transform:translateY(-2px); }
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .form-input { width:100%; padding:0.875rem 1.25rem; background:white; color:#1C1C1E; border:1.5px solid rgba(26,60,43,0.15); border-radius:10px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; transition:border-color 0.2s ease, box-shadow 0.2s ease; outline:none; }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-input:focus { border-color:#2D6A4F; box-shadow:0 0 0 3px rgba(45,106,79,0.12); }
+    .tag { display:inline-block; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.7rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+    details summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:1rem 0; border-bottom:1px solid rgba(26,60,43,0.1); font-weight:500; color:#1A3C2B; }
+    details summary::-webkit-details-marker { display:none; }
+    details[open] summary { color:#2D6A4F; }
+    details .details-body { padding:1rem 0 1.5rem; color:#6B7280; font-size:0.875rem; line-height:1.75; }
+    .summary-icon { width:20px; height:20px; flex-shrink:0; transition:transform 0.2s ease; }
+    details[open] .summary-icon { transform:rotate(45deg); }
+    .article-body { font-size:1rem; line-height:1.8; color:#374151; }
+    .article-body h2 { font-size:1.375rem; font-weight:600; color:#1A3C2B; margin:2.5rem 0 1rem; letter-spacing:-0.01em; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body ul { margin-bottom:1.5rem; padding-left:1.5rem; }
+    .article-body ul li { margin-bottom:0.5rem; list-style:disc; }
+    .pull-quote { font-size:1.25rem; font-weight:600; color:#1A3C2B; line-height:1.5; letter-spacing:-0.01em; border-left:3px solid #52B788; padding-left:1.5rem; margin:2.5rem 0; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/index.html"><img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:36px;width:auto;"></a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="/services.html" class="nav-link">Diensten</a></li>
+        <li><a href="/who-we-are.html" class="nav-link">Over ons</a></li>
+        <li><a href="/resources.html" class="nav-link">Resources</a></li>
+        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="/get-in-touch.html" class="btn-primary" style="font-size:0.875rem;padding:0.625rem 1.25rem;">Neem contact op</a>
+        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden grain pt-32 pb-24 lg:pb-32" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 80% at 10% 50%, rgba(82,183,136,0.12) 0%, transparent 65%), radial-gradient(ellipse 50% 60% at 90% 80%, rgba(45,106,79,0.15) 0%, transparent 60%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center gap-2 mb-6 fade-up">
+      <a href="/services.html" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.5);">Diensten</a>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-sm" style="color:rgba(245,240,232,0.5);">Certificaten &amp; marktvalidatie</span>
+    </div>
+    <div class="mb-5 fade-up">
+      <span class="tag" style="background:rgba(82,183,136,0.2); color:#74C69D;">Certificaten &amp; marktvalidatie</span>
+    </div>
+    <h1 class="display-lg text-cream mb-5 fade-up" style="max-width:680px;">ISO Certificering</h1>
+    <p class="text-base lg:text-lg mb-8 fade-up" style="max-width:560px; color:rgba(245,240,232,0.65); line-height:1.65;">Internationaal erkende normen voor milieu-, energie- en duurzaamheidsmanagement — van nulmeting tot certificering en onderhoud.</p>
+    <div class="flex flex-wrap gap-3 fade-up">
+      <a href="/get-in-touch.html" class="btn-outline">Neem contact op</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- LEFT -->
+      <div class="lg:col-span-7 fade-up">
+        <div class="article-body">
+
+          <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg" alt="ISO Certificering" class="w-full rounded-xl mb-8 shadow-green" style="aspect-ratio:16/9;object-fit:cover;" />
+
+          <h2>Wat is het?</h2>
+          <p>ISO-normen bieden een internationaal erkend kader voor milieu- en duurzaamheidsmanagement. De meest relevante voor duurzaamheid zijn ISO 14001 (milieumanagement), ISO 50001 (energiemanagement) en ISO 26000 (richtlijnen voor maatschappelijk verantwoord ondernemen). Wij begeleiden u van nulmeting tot certificering en zorgen dat uw systeem actueel blijft.</p>
+          <p>ISO-certificering is geen papieren oefening. Het verplicht uw organisatie tot een structurele aanpak: doelstellingen bepalen, prestaties meten, afwijkingen corrigeren en continu verbeteren. Dat maakt ISO-gecertificeerde bedrijven aantoonbaar serieuzer op het vlak van milieu- en duurzaamheidsmanagement.</p>
+
+          <div class="pull-quote">"ISO-normen zijn geen papieren exercitie — ze dwingen structuur af in de manier waarop u duurzaamheid beheert, meet en verbetert."</div>
+
+          <h2>Hoe werkt het?</h2>
+          <p>Wij begeleiden u van nulmeting tot certificering en ondersteunen u nadien bij hercertificering en continue verbetering. Elk traject bevat de volgende stappen:</p>
+          <ul>
+            <li>Selectie van de relevante ISO-norm(en) op basis van uw sector en klantenvereisten</li>
+            <li>Nulmeting: huidige situatie toetsen aan de normvereisten en gaps in kaart brengen</li>
+            <li>Opzetten van een managementsysteem inclusief beleid, doelstellingen, procedures en registraties</li>
+            <li>Interne audit en corrigerende maatregelen voor resterende tekortkomingen</li>
+            <li>Begeleiding bij de externe certificeringsaudit door een erkende certificeringsinstelling</li>
+            <li>Ondersteuning bij periodieke surveillance-audits en driejaarlijkse hercertificering</li>
+          </ul>
+
+          <div class="rounded-xl p-8 my-8" style="background:#1A3C2B; color:#F5F0E8;">
+            <p class="text-sm font-semibold mb-2" style="color:#74C69D; letter-spacing:0.06em; text-transform:uppercase;">Welke norm voor uw organisatie?</p>
+            <p style="color:rgba(245,240,232,0.85); line-height:1.75; margin-bottom:0;"><strong style="color:#F5F0E8;">ISO 14001</strong> voor milieumanagement (breed inzetbaar), <strong style="color:#F5F0E8;">ISO 50001</strong> voor energiemanagement (energiebesparing centraal), <strong style="color:#F5F0E8;">ISO 26000</strong> als richtlijn voor MVO (niet certificeerbaar, maar een erkend referentiekader). Wij helpen u de juiste keuze maken.</p>
+          </div>
+
+          <h2>Voor wie is dit?</h2>
+          <p>ISO-certificering is relevant voor een breed scala aan organisaties. Het is bijzonder waardevol wanneer:</p>
+          <ul>
+            <li>Klanten of aanbestedende diensten om ISO-certificering vragen als inkoopvereiste</li>
+            <li>U uw milieu- of energiemanagement wilt professionaliseren en intern verankeren</li>
+            <li>U een solide basis wilt leggen voor CSRD-rapportage en andere duurzaamheidsverplichtingen</li>
+            <li>U efficiëntiewinsten wilt realiseren door gestructureerd energiemanagement (ISO 50001)</li>
+          </ul>
+
+          <div class="rounded-xl p-6 my-8" style="background:rgba(82,183,136,0.05); border:1px solid rgba(82,183,136,0.30);">
+            <p class="font-semibold text-forest mb-2">Welke ISO-norm past bij uw situatie?</p>
+            <p style="color:#374151; margin-bottom:1rem; font-size:0.9375rem;">Wij adviseren u gratis over de meest geschikte norm en de haalbaarheid van certificering binnen uw organisatie.</p>
+            <a href="/get-in-touch.html" class="btn-primary" style="font-size:0.875rem;">Vraag gratis advies aan</a>
+          </div>
+
+          <h2>Veelgestelde vragen</h2>
+          <div class="mt-4">
+            <details>
+              <summary>
+                Welke ISO-norm is het meest relevant voor mijn sector?
+                <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </summary>
+              <div class="details-body">ISO 14001 is de meest universeel toepasbare norm voor milieumanagement en is geschikt voor vrijwel elke sector. ISO 50001 is specifiek interessant voor energie-intensieve bedrijven in productie, logistiek of vastgoed. ISO 26000 wordt het meest ingezet door bedrijven die MVO willen verankeren maar niet noodzakelijk een formeel certificaat nodig hebben.</div>
+            </details>
+            <details>
+              <summary>
+                Wat is het verschil tussen ISO 14001 en de CO₂ Prestatieladder?
+                <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </summary>
+              <div class="details-body">ISO 14001 is een brede milieumanagementnorm die alle milieuthema's dekt (afval, water, luchtemissies, biodiversiteit). De CO₂ Prestatieladder richt zich specifiek op CO₂ en biedt een directe koppeling aan gunningsvoordeel bij aanbestedingen. De systemen zijn complementair: ISO 14001 biedt een solide basis voor de Prestatieladder.</div>
+            </details>
+            <details>
+              <summary>
+                Hoe lang duurt het certificeringstraject?
+                <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </summary>
+              <div class="details-body">Voor ISO 14001 rekent u gemiddeld 4 tot 8 maanden van nulmeting tot certificering, afhankelijk van de omvang en complexiteit van uw organisatie. ISO 50001 vraagt iets meer tijd door de energiedata-vereisten. Wij plannen het traject zo dat u zo snel mogelijk kunt certificeren.</div>
+            </details>
+            <details>
+              <summary>
+                Hoe houd ik mijn ISO-certificering actueel?
+                <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </summary>
+              <div class="details-body">ISO-certificaten worden jaarlijks bevestigd via een surveillance-audit en elke drie jaar volledig hercertificeerd. Wij bieden onderhoudscontracten aan waarbij wij u jaarlijks begeleiden bij de interne audit, de managementreview en de voorbereiding op de externe audit — zodat uw certificaat nooit in gevaar komt.</div>
+            </details>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="lg:col-span-5">
+        <div class="sticky top-28 space-y-6">
+
+          <div class="rounded-2xl p-8 shadow-green" style="background:#1A3C2B;">
+            <p class="text-sm font-semibold mb-1" style="color:#74C69D; letter-spacing:0.06em; text-transform:uppercase;">Aan de slag?</p>
+            <h3 class="display-sm text-cream mb-4">Behaal uw ISO-certificaat</h3>
+            <p class="text-sm mb-6" style="color:rgba(245,240,232,0.7); line-height:1.7;">Wij adviseren u gratis over de meest geschikte ISO-norm en de snelste route naar certificering.</p>
+            <a href="/get-in-touch.html" class="btn-outline w-full justify-center mb-3">Neem contact op</a>
+            <p class="text-xs text-center" style="color:rgba(245,240,232,0.4);">Gratis normadvies · Geen verplichtingen</p>
+          </div>
+
+          <div class="rounded-2xl p-6 shadow-cream" style="background:white;">
+            <p class="text-xs font-semibold mb-4" style="color:#8B6B47; letter-spacing:0.06em; text-transform:uppercase;">Gerelateerde diensten</p>
+            <div class="space-y-3">
+              <a href="/services/co2-prestatieladder.html" class="flex items-center justify-between p-3 rounded-xl hover:bg-cream transition-colors group" style="border:1px solid rgba(26,60,43,0.08);">
+                <span class="text-sm font-medium text-forest">CO₂ Prestatieladder</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-leaf group-hover:translate-x-1 transition-transform"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="/services/ecovadis.html" class="flex items-center justify-between p-3 rounded-xl hover:bg-cream transition-colors group" style="border:1px solid rgba(26,60,43,0.08);">
+                <span class="text-sm font-medium text-forest">EcoVadis</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-leaf group-hover:translate-x-1 transition-transform"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="/services/esg-strategie.html" class="flex items-center justify-between p-3 rounded-xl hover:bg-cream transition-colors group" style="border:1px solid rgba(26,60,43,0.08);">
+                <span class="text-sm font-medium text-forest">ESG-strategie</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="text-leaf group-hover:translate-x-1 transition-transform"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl p-6" style="background:#EDE8DE;">
+            <p class="text-xs font-semibold mb-2" style="color:#8B6B47; letter-spacing:0.06em; text-transform:uppercase;">Blijf op de hoogte</p>
+            <p class="text-sm text-forest font-medium mb-4">Ontvang updates over ISO-normen, CSRD en duurzaamheidsregelgeving.</p>
+            <form class="space-y-3" onsubmit="return false;">
+              <input type="email" class="form-input" placeholder="uw@emailadres.nl" />
+              <button type="submit" class="btn-primary w-full justify-center" style="font-size:0.875rem;">Inschrijven</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="relative grain overflow-hidden py-24" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 80% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-sm font-semibold mb-4" style="color:#74C69D; letter-spacing:0.06em; text-transform:uppercase;">Structureel duurzaamheidsmanagement</p>
+    <h2 class="display-md text-cream mb-6">Behaal uw ISO-certificering</h2>
+    <p class="text-base mb-8" style="color:rgba(245,240,232,0.65); line-height:1.7;">Wij begeleiden u van nulmeting tot certificering — en zorgen dat uw systeem actueel blijft.</p>
+    <a href="/get-in-touch.html" class="btn-outline">Neem contact op</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-8 lg:p-12" style="background:#EDE8DE;">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="text-xs font-semibold mb-3" style="color:#8B6B47; letter-spacing:0.06em; text-transform:uppercase;">Nieuwsbrief</p>
+          <h2 class="display-sm text-forest mb-4">Blijf vooroplopen in duurzaamheid</h2>
+          <p class="text-sm" style="color:#374151; line-height:1.75;">Ontvang maandelijks de meest relevante updates over ISO-normen, duurzaamheidsregelgeving en best practices — direct in uw inbox.</p>
+        </div>
+        <form class="space-y-4" onsubmit="return false;">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input type="text" class="form-input" placeholder="Voornaam" />
+            <input type="text" class="form-input" placeholder="Achternaam" />
+          </div>
+          <input type="email" class="form-input" placeholder="E-mailadres" />
+          <button type="submit" class="btn-primary w-full justify-center">Aanmelden voor nieuwsbrief</button>
+          <p class="text-xs text-center" style="color:#9CA3AF;">Geen spam. Uitschrijven kan altijd.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#122A1E;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+    <div class="grid lg:grid-cols-4 gap-10 lg:gap-12 mb-12">
+      <div class="lg:col-span-1">
+        <img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:36px;width:auto;margin-bottom:1.25rem;">
+        <p class="text-sm" style="color:rgba(245,240,232,0.5); line-height:1.75;">Economie en ecologie samenbrengen — voor een leefbare toekomst.</p>
+      </div>
+      <div>
+        <p class="text-xs font-semibold mb-5" style="color:rgba(245,240,232,0.35); letter-spacing:0.08em; text-transform:uppercase;">Menu</p>
+        <ul class="space-y-3">
+          <li><a href="/services.html" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Diensten</a></li>
+          <li><a href="/who-we-are.html" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Over ons</a></li>
+          <li><a href="/resources.html" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Resources</a></li>
+          <li><a href="/accountability.html" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Accountability</a></li>
+          <li><a href="/get-in-touch.html" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-semibold mb-5" style="color:rgba(245,240,232,0.35); letter-spacing:0.08em; text-transform:uppercase;">Contact</p>
+        <ul class="space-y-3">
+          <li><a href="mailto:info@theecologicalentrepreneur.com" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">info@theecologicalentrepreneur.com</a></li>
+          <li><span class="text-sm" style="color:rgba(245,240,232,0.6);">België &amp; Nederland</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-semibold mb-5" style="color:rgba(245,240,232,0.35); letter-spacing:0.08em; text-transform:uppercase;">Legal</p>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Privacybeleid</a></li>
+          <li><a href="#" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Algemene voorwaarden</a></li>
+          <li><a href="#" class="text-sm hover:text-cream transition-colors" style="color:rgba(245,240,232,0.6);">Cookiebeleid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8" style="border-top:1px solid rgba(245,240,232,0.08);">
+      <p class="text-xs" style="color:rgba(245,240,232,0.3);">© 2026 The Ecological Entrepreneur. Alle rechten voorbehouden.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

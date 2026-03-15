@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compensatie Strategie — Strategie & beleid — The Ecological Entrepreneur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          forest: { DEFAULT:'#1A3C2B', light:'#234D38', dark:'#122A1E' },
+          sage:   { DEFAULT:'#2D6A4F', light:'#3D8A67', dark:'#1E4E39' },
+          leaf:   { DEFAULT:'#52B788', light:'#74C69D', dark:'#40916C' },
+          cream:  { DEFAULT:'#F5F0E8', light:'#FAF8F3', dark:'#EAE4D6' },
+          bark:   { DEFAULT:'#8B6B47', light:'#A88054', dark:'#6B5235' },
+        },
+        fontFamily: { body:['"Readex Pro"','system-ui','sans-serif'], brand:['"Readex Pro"','system-ui','sans-serif'] },
+      }}
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+    .grain::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1; }
+    .display-xl { font-family:'Readex Pro',sans-serif; font-size:clamp(3.5rem,8vw,7rem); line-height:1.0; letter-spacing:-0.03em; font-weight:600; }
+    .display-lg { font-family:'Readex Pro',sans-serif; font-size:clamp(2.5rem,5vw,4.5rem); line-height:1.05; letter-spacing:-0.025em; font-weight:600; }
+    .display-md { font-family:'Readex Pro',sans-serif; font-size:clamp(1.8rem,3.5vw,3rem); line-height:1.1; letter-spacing:-0.02em; font-weight:600; }
+    .display-sm { font-family:'Readex Pro',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); line-height:1.2; letter-spacing:-0.015em; font-weight:600; }
+    .shadow-green { box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12); }
+    .shadow-cream { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
+    .nav-link { font-size:0.875rem; font-weight:400; color:rgba(245,240,232,0.85); text-decoration:none; letter-spacing:0.01em; transition:color 0.2s ease; position:relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#74C69D; transition:width 0.25s ease; }
+    .nav-link:hover { color:#F5F0E8; }
+    .nav-link:hover::after { width:100%; }
+    .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:#1A3C2B; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; letter-spacing:0.01em; border:1.5px solid transparent; transition:background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; text-decoration:none; white-space:nowrap; }
+    .btn-primary:hover { background:#234D38; transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,60,43,0.25); }
+    .btn-primary:active { transform:translateY(0); }
+    .btn-primary:focus-visible { outline:2px solid #52B788; outline-offset:3px; }
+    .btn-outline { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid rgba(245,240,232,0.5); transition:border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-outline:hover { border-color:#F5F0E8; background:rgba(245,240,232,0.1); transform:translateY(-2px); }
+    .btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#1A3C2B; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid #1A3C2B; transition:background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-ghost:hover { background:#1A3C2B; color:#F5F0E8; transform:translateY(-2px); }
+    .service-card { background:white; border-radius:16px; padding:2rem; border:1px solid rgba(26,60,43,0.08); transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; }
+    .service-card:hover { transform:translateY(-4px); box-shadow:0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .form-input { width:100%; padding:0.875rem 1.25rem; background:white; color:#1C1C1E; border:1.5px solid rgba(26,60,43,0.15); border-radius:10px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; transition:border-color 0.2s ease, box-shadow 0.2s ease; outline:none; }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-input:focus { border-color:#2D6A4F; box-shadow:0 0 0 3px rgba(45,106,79,0.12); }
+    .tag { display:inline-block; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.7rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+    details summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:1rem 0; border-bottom:1px solid rgba(26,60,43,0.1); font-weight:500; color:#1A3C2B; }
+    details summary::-webkit-details-marker { display:none; }
+    details[open] summary { color:#2D6A4F; }
+    details .details-body { padding:1rem 0 1.5rem; color:#6B7280; font-size:0.875rem; line-height:1.75; }
+    .summary-icon { width:20px; height:20px; flex-shrink:0; transition:transform 0.2s ease; }
+    details[open] .summary-icon { transform:rotate(45deg); }
+    .article-body { font-size:1rem; line-height:1.8; color:#374151; }
+    .article-body h2 { font-size:1.375rem; font-weight:600; color:#1A3C2B; margin:2.5rem 0 1rem; letter-spacing:-0.01em; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body ul { margin-bottom:1.5rem; padding-left:1.5rem; }
+    .article-body ul li { margin-bottom:0.5rem; list-style:disc; }
+    .pull-quote { font-size:1.25rem; font-weight:600; color:#1A3C2B; line-height:1.5; letter-spacing:-0.01em; border-left:3px solid #52B788; padding-left:1.5rem; margin:2.5rem 0; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/index.html"><img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:36px;width:auto;"></a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="/services.html" class="nav-link">Onze diensten</a></li>
+        <li><a href="/who-we-are.html" class="nav-link">Wie zijn we</a></li>
+        <li><a href="/resources.html" class="nav-link">Resources</a></li>
+        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+        <li><a href="#" class="nav-link flex items-center gap-1.5"><span style="color:#52B788;font-size:0.75rem;">⬡</span> ESGpro</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="/get-in-touch.html" class="btn-primary" style="font-size:0.875rem;padding:0.625rem 1.25rem;">Neem contact op</a>
+        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden grain pt-32 pb-24 lg:pb-28" style="background:#0d2318;">
+  <div class="absolute inset-0" style="background-image:url('https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg'); background-size:cover; background-position:center; opacity:0.22;"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(ellipse 80% 70% at 20% 50%, rgba(13,35,24,0.95) 0%, rgba(13,35,24,0.65) 100%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center gap-2 mb-6 fade-up">
+      <a href="/services.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Onze diensten</a>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-cream/50 text-sm">Strategie &amp; beleid</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-cream/80 text-sm">Compensatie Strategie</span>
+    </div>
+    <div class="mb-4 fade-up">
+      <span class="tag" style="background:rgba(82,183,136,0.2); color:#74C69D;">Strategie &amp; beleid</span>
+    </div>
+    <h1 class="display-lg text-cream mb-5 fade-up" style="max-width:680px;">Compensatie Strategie</h1>
+    <p class="text-base lg:text-lg mb-8 fade-up" style="max-width:560px; color:rgba(245,240,232,0.75); line-height:1.65;">
+      Bepaal hoe uw organisatie de resterende CO₂-uitstoot na maximale reductie verantwoord compenseert — als legitiem onderdeel van een volledige klimaatstrategie.
+    </p>
+    <div class="flex flex-wrap gap-3 fade-up">
+      <a href="/get-in-touch.html" class="btn-primary">Neem contact op</a>
+      <a href="/services.html" class="btn-outline">Alle diensten</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- LEFT COLUMN (7) -->
+      <div class="lg:col-span-7 article-body fade-up">
+
+        <!-- Hero image -->
+        <div class="relative rounded-2xl overflow-hidden mb-10" style="aspect-ratio:16/9;">
+          <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg" alt="Compensatie Strategie" class="w-full h-full object-cover" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(26,60,43,0.5) 0%, transparent 60%); mix-blend-mode:multiply;"></div>
+        </div>
+
+        <h2>Wat is het?</h2>
+        <p>
+          Een compensatie strategie bepaalt hoe uw organisatie de resterende CO₂-uitstoot — die na maximale reductie overblijft — verantwoord kan compenseren. Compensatie is niet de eerste stap, maar wel een legitiem en noodzakelijk onderdeel van een volledige klimaatstrategie. Het gaat erom dat u eerst alles doet wat in uw macht ligt om uitstoot te reduceren, en pas daarna de onvermijdelijke restuitstoot compenseert via gecertificeerde projecten.
+        </p>
+        <p>
+          Een goed opgebouwde compensatiestrategie geeft u niet alleen klimaatcredibiliteit — het biedt ook een verhaal dat u intern en extern kunt communiceren. Mits eerlijk en transparant gepresenteerd, is compensatie een krachtig instrument om de kloof tussen vandaag en klimaatneutraliteit te overbruggen.
+        </p>
+
+        <div class="pull-quote">
+          "Compensatie is geen vrijbrief om te stoppen met reduceren. Het is de verantwoorde afsluiting van een ernstig klimaattraject."
+        </div>
+
+        <h2>Hoe werkt het?</h2>
+        <p>
+          We begeleiden u van het bepalen van uw restuitstoot tot de selectie van de juiste compensatieprojecten en de integratie in uw communicatie:
+        </p>
+        <ul>
+          <li><strong>Restuitstoot bepalen:</strong> Op basis van uw emissierapportage (scope 1, 2 en deels scope 3) bepalen we hoeveel CO₂ er na uw reductietraject overblijft.</li>
+          <li><strong>Projectselectie:</strong> We selecteren gecertificeerde compensatieprojecten (Verra VCS, Gold Standard) die passen bij uw sector, merkwaarden en geografie.</li>
+          <li><strong>Merkwaarden-afstemming:</strong> Compensatieprojecten worden beoordeeld op co-benefits (biodiversiteit, lokale gemeenschap, SDGs) die resoneren met uw positionering.</li>
+          <li><strong>Communicatie-integratie:</strong> We helpen u compensatie eerlijk en geloofwaardig te communiceren — zonder greenwashing-risico.</li>
+          <li><strong>Monitoring &amp; verificatie:</strong> We zorgen voor een opvolgsysteem zodat de gecompenseerde tonnages jaarlijks worden geverifieerd en gedocumenteerd.</li>
+        </ul>
+
+        <!-- Dark blockquote card -->
+        <div class="rounded-2xl p-8 my-8" style="background:#1A3C2B;">
+          <p class="text-cream text-base" style="line-height:1.75; font-style:italic;">
+            "De beste compensatiestrategie is één die geïntegreerd is in een bredere klimaatstrategie — niet als alibi, maar als bewuste keuze voor projecten die écht een verschil maken."
+          </p>
+          <p class="text-leaf text-sm mt-4 font-medium">— The Ecological Entrepreneur</p>
+        </div>
+
+        <h2>Voor wie is dit?</h2>
+        <p>
+          Een compensatiestrategie is relevant voor organisaties die serieus werk maken van hun klimaatraject:
+        </p>
+        <ul>
+          <li>Bedrijven die klimaatneutraal of net-zero willen worden en een complete aanpak zoeken</li>
+          <li>Bedrijven die SBTi-doelstellingen (Science Based Targets) willen aanvullen met kortetermijncompensatie in de transitieperiode</li>
+          <li>Organisaties die carbon credits strategisch willen inzetten als onderdeel van hun ESG-rapportage</li>
+          <li>Bedrijven die hun klimaatcommunicatie willen versterken met verifieerbare, gecertificeerde compensatie</li>
+        </ul>
+
+        <!-- Inline CTA box -->
+        <div class="rounded-2xl p-8 my-8" style="background:#EDE8DE; border:1px solid rgba(26,60,43,0.1);">
+          <p class="text-sm font-semibold uppercase tracking-widest text-sage mb-2">Meer weten?</p>
+          <h3 class="display-sm text-forest mb-3">Bespreek uw klimaattraject</h3>
+          <p class="text-sm mb-5" style="color:#6B7280; line-height:1.75;">We bespreken graag uw huidige emissiepositie en hoe een compensatiestrategie uw klimaatraject kan vervolledigen.</p>
+          <a href="/get-in-touch.html" class="btn-primary">Neem contact op <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+
+        <h2>Veelgestelde vragen</h2>
+        <div>
+          <details class="mb-1">
+            <summary>
+              <span class="text-sm">Is compenseren wel echt duurzaam?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">Compensatie is duurzaam wanneer het de derde stap is, na vermijden en reduceren. Gecertificeerde projecten (Verra, Gold Standard) bieden bewijs van echte CO₂-opname of -vermijding. Kritiek op compensatie is terecht wanneer het wordt gebruikt als excuus om niet te reduceren — maar als aanvulling op een serieuze reductiestrategie is het een waardevol instrument.</div>
+          </details>
+          <details class="mb-1">
+            <summary>
+              <span class="text-sm">Welke projecten komen in aanmerking voor compensatie?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">We werken uitsluitend met projecten die gecertificeerd zijn door erkende standaarden zoals Verra VCS (Verified Carbon Standard) of Gold Standard. Categorieën omvatten bosbescherming (REDD+), herbebossing, hernieuwbare energie in ontwikkelingslanden, en kookmethodes die brandstofverbruik verminderen. We selecteren altijd op basis van addionaliteit, permanentie en co-benefits.</div>
+          </details>
+          <details class="mb-1">
+            <summary>
+              <span class="text-sm">Hoe vermijd ik greenwashing bij compensatie?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">Greenwashing vermijdt u door (1) compensatie altijd te presenteren als aanvulling op reductie-inspanningen, nooit als vervanging, (2) te werken met gecertificeerde en geverifieerde projecten, (3) transparant te rapporteren over zowel uw restuitstoot als de gebruikte compensatiemethode, en (4) termen als 'klimaatneutraal' alleen te gebruiken wanneer u voldoet aan erkende definities.</div>
+          </details>
+          <details>
+            <summary>
+              <span class="text-sm">Hoe integreer ik compensatie in mijn communicatie?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">Effectieve communicatie over compensatie is eerlijk, specifiek en gekaderd in uw bredere klimaatstrategie. We helpen u een communicatiekader opstellen dat aansluit bij uw merkpositionering — van website en jaarverslag tot klantcommunicatie en tenderrespons. We zorgen ook dat uw claims juridisch houdbaar zijn in het licht van de Europese Green Claims Directive.</div>
+          </details>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN (5) - Sticky sidebar -->
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-28 space-y-6">
+
+          <!-- Contact card -->
+          <div class="rounded-2xl p-8 fade-up" style="background:#1A3C2B;">
+            <p class="text-leaf text-xs font-semibold uppercase tracking-widest mb-3">Neem contact op</p>
+            <h3 class="display-sm text-cream mb-3">Start uw compensatietraject</h3>
+            <p class="text-sm mb-6" style="color:rgba(245,240,232,0.65); line-height:1.7;">Laat uw gegevens achter en we bespreken samen hoe compensatie past binnen uw klimaatstrategie.</p>
+            <form class="space-y-3">
+              <input type="text" placeholder="Uw naam" class="form-input" />
+              <input type="email" placeholder="E-mailadres" class="form-input" />
+              <input type="text" placeholder="Bedrijfsnaam" class="form-input" />
+              <button type="submit" class="btn-primary w-full justify-center">Verstuur <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </form>
+          </div>
+
+          <!-- Related services -->
+          <div class="rounded-2xl p-8 fade-up" style="background:white; border:1px solid rgba(26,60,43,0.08);">
+            <p class="text-sage text-xs font-semibold uppercase tracking-widest mb-5">Gerelateerde diensten</p>
+            <ul class="space-y-3">
+              <li>
+                <a href="/services/reductie-strategie.html" class="flex items-center gap-3 group">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(82,183,136,0.1);">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="#52B788" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-forest group-hover:text-sage transition-colors">Reductie Strategie</span>
+                </a>
+              </li>
+              <li>
+                <a href="/services/carbon-credits.html" class="flex items-center gap-3 group">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(82,183,136,0.1);">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="#52B788" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-forest group-hover:text-sage transition-colors">Carbon Credits</span>
+                </a>
+              </li>
+              <li>
+                <a href="/services/compensatie-project-ontwikkeling.html" class="flex items-center gap-3 group">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(82,183,136,0.1);">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="#52B788" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-forest group-hover:text-sage transition-colors">Compensatie Project Ontwikkeling</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter mini-card -->
+          <div class="rounded-2xl p-8 fade-up" style="background:#EDE8DE; border:1px solid rgba(26,60,43,0.08);">
+            <p class="text-sage text-xs font-semibold uppercase tracking-widest mb-3">Nieuwsbrief</p>
+            <h4 class="text-forest font-semibold text-base mb-2" style="letter-spacing:-0.01em;">Blijf op de hoogte</h4>
+            <p class="text-sm mb-4" style="color:#6B7280; line-height:1.65;">Ontvang maandelijkse inzichten over klimaatstrategie, carbon markets en ESG-regelgeving.</p>
+            <form class="space-y-2">
+              <input type="email" placeholder="Uw e-mailadres" class="form-input" />
+              <button type="submit" class="btn-ghost w-full justify-center">Inschrijven</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="relative py-24 lg:py-32 grain overflow-hidden" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center fade-up">
+    <p class="text-leaf text-sm font-medium tracking-widest uppercase mb-4">Samenwerken</p>
+    <h2 class="display-md text-cream mb-6">Laten we ecologie en economie samen brengen!</h2>
+    <p class="text-cream/70 text-lg mb-10" style="line-height:1.7;">We staan klaar om u te helpen. Neem contact op voor meer informatie of om direct van start te gaan.</p>
+    <a href="/get-in-touch.html" class="btn-primary" style="background:#52B788;color:#1A3C2B;">Neem contact op <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-20 lg:py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background:#EDE8DE; border:1px solid rgba(26,60,43,0.1);">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sage text-sm font-medium tracking-widest uppercase mb-3">Op de hoogte blijven</p>
+          <h2 class="display-md text-forest mb-3">Schrijf u in op onze nieuwsbrief</h2>
+          <p class="text-gray-500 text-sm" style="line-height:1.65;">Ontvang de laatste inzichten over duurzaamheid, ecologie en verantwoord ondernemen.</p>
+        </div>
+        <form class="grid sm:grid-cols-2 gap-3">
+          <input type="text" placeholder="Voornaam" class="form-input" />
+          <input type="text" placeholder="Achternaam" class="form-input" />
+          <input type="text" placeholder="Bedrijfsnaam" class="form-input" />
+          <input type="email" placeholder="E-mailadres" class="form-input" />
+          <div class="sm:col-span-2"><button type="submit" class="btn-primary w-full justify-center">Inschrijven</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#122A1E;" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+      <div class="lg:col-span-1">
+        <div class="mb-5"><img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:40px;width:auto;"></div>
+        <p class="text-cream/50 text-sm" style="line-height:1.7;">Duurzaamheid vanzelfsprekend maken door ecologie en economie samen te brengen.</p>
+      </div>
+      <div>
+        <h4 class="text-cream/90 text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
+        <ul class="space-y-3">
+          <li><a href="/services.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Onze diensten</a></li>
+          <li><a href="/who-we-are.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Wie zijn we</a></li>
+          <li><a href="/resources.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Resources</a></li>
+          <li><a href="/accountability.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Accountability</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
+        <ul class="space-y-3">
+          <li><a href="mailto:contact@t-ee.eu" class="text-cream/50 text-sm hover:text-cream transition-colors">contact@t-ee.eu</a></li>
+          <li><span class="text-cream/50 text-sm">Koningin Elisabethlei 16,<br/>2018 Antwerp</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Privacybeleid</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Algemene voorwaarden</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Cookiebeleid</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style="border-top:1px solid rgba(255,255,255,0.08);">
+      <p class="text-cream/30 text-xs">© 2026 The Ecological Entrepreneur. Alle rechten voorbehouden.</p>
+      <p class="text-cream/30 text-xs">Duurzaamheid vanzelfsprekend maken.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

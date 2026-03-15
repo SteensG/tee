@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sociale Analyse — The Ecological Entrepreneur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          forest: { DEFAULT:'#1A3C2B', light:'#234D38', dark:'#122A1E' },
+          sage:   { DEFAULT:'#2D6A4F', light:'#3D8A67', dark:'#1E4E39' },
+          leaf:   { DEFAULT:'#52B788', light:'#74C69D', dark:'#40916C' },
+          cream:  { DEFAULT:'#F5F0E8', light:'#FAF8F3', dark:'#EAE4D6' },
+          bark:   { DEFAULT:'#8B6B47', light:'#A88054', dark:'#6B5235' },
+        },
+        fontFamily: { body:['"Readex Pro"','system-ui','sans-serif'], brand:['"Readex Pro"','system-ui','sans-serif'] },
+      }}
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Readex Pro', system-ui, sans-serif; background: #F5F0E8; color: #1C1C1E; }
+    .grain::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1; }
+    .display-xl { font-family:'Readex Pro',sans-serif; font-size:clamp(3.5rem,8vw,7rem); line-height:1.0; letter-spacing:-0.03em; font-weight:600; }
+    .display-lg { font-family:'Readex Pro',sans-serif; font-size:clamp(2.5rem,5vw,4.5rem); line-height:1.05; letter-spacing:-0.025em; font-weight:600; }
+    .display-md { font-family:'Readex Pro',sans-serif; font-size:clamp(1.8rem,3.5vw,3rem); line-height:1.1; letter-spacing:-0.02em; font-weight:600; }
+    .display-sm { font-family:'Readex Pro',sans-serif; font-size:clamp(1.4rem,2.5vw,2rem); line-height:1.2; letter-spacing:-0.015em; font-weight:600; }
+    .shadow-green { box-shadow: 0 1px 2px rgba(26,60,43,0.08), 0 4px 12px rgba(26,60,43,0.10), 0 16px 40px rgba(26,60,43,0.12); }
+    .shadow-cream { box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
+    #nav { transition: background 0.4s ease, backdrop-filter 0.4s ease; }
+    #nav.scrolled { background: rgba(26,60,43,0.96); backdrop-filter: blur(12px); }
+    .nav-link { font-size:0.875rem; font-weight:400; color:rgba(245,240,232,0.85); text-decoration:none; letter-spacing:0.01em; transition:color 0.2s ease; position:relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#74C69D; transition:width 0.25s ease; }
+    .nav-link:hover { color:#F5F0E8; }
+    .nav-link:hover::after { width:100%; }
+    .btn-primary { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:#1A3C2B; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; letter-spacing:0.01em; border:1.5px solid transparent; transition:background 0.25s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; text-decoration:none; white-space:nowrap; }
+    .btn-primary:hover { background:#234D38; transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,60,43,0.25); }
+    .btn-primary:active { transform:translateY(0); }
+    .btn-primary:focus-visible { outline:2px solid #52B788; outline-offset:3px; }
+    .btn-outline { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#F5F0E8; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid rgba(245,240,232,0.5); transition:border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-outline:hover { border-color:#F5F0E8; background:rgba(245,240,232,0.1); transform:translateY(-2px); }
+    .btn-ghost { display:inline-flex; align-items:center; gap:0.5rem; padding:0.875rem 2rem; background:transparent; color:#1A3C2B; border-radius:100px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; font-weight:500; border:1.5px solid #1A3C2B; transition:background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; text-decoration:none; }
+    .btn-ghost:hover { background:#1A3C2B; color:#F5F0E8; transform:translateY(-2px); }
+    .service-card { background:white; border-radius:16px; padding:2rem; border:1px solid rgba(26,60,43,0.08); transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; }
+    .service-card:hover { transform:translateY(-4px); box-shadow:0 4px 12px rgba(26,60,43,0.08), 0 16px 40px rgba(26,60,43,0.12); }
+    .content-card { background:white; border-radius:16px; overflow:hidden; border:1px solid rgba(0,0,0,0.06); transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; cursor:pointer; }
+    .content-card:hover { transform:translateY(-4px); box-shadow:0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.1); }
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .form-input { width:100%; padding:0.875rem 1.25rem; background:white; color:#1C1C1E; border:1.5px solid rgba(26,60,43,0.15); border-radius:10px; font-family:'Readex Pro',sans-serif; font-size:0.875rem; transition:border-color 0.2s ease, box-shadow 0.2s ease; outline:none; }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-input:focus { border-color:#2D6A4F; box-shadow:0 0 0 3px rgba(45,106,79,0.12); }
+    .tag { display:inline-block; padding:0.25rem 0.75rem; border-radius:100px; font-size:0.7rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+    details summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; padding:1rem 0; border-bottom:1px solid rgba(26,60,43,0.1); font-weight:500; color:#1A3C2B; }
+    details summary::-webkit-details-marker { display:none; }
+    details[open] summary { color:#2D6A4F; }
+    details .details-body { padding:1rem 0 1.5rem; color:#6B7280; font-size:0.875rem; line-height:1.75; }
+    .summary-icon { width:20px; height:20px; flex-shrink:0; transition:transform 0.2s ease; }
+    details[open] .summary-icon { transform:rotate(45deg); }
+    .article-body { font-size:1rem; line-height:1.8; color:#374151; }
+    .article-body h2 { font-size:1.375rem; font-weight:600; color:#1A3C2B; margin:2.5rem 0 1rem; letter-spacing:-0.01em; }
+    .article-body h3 { font-size:1.125rem; font-weight:600; color:#1A3C2B; margin:2rem 0 0.75rem; }
+    .article-body p { margin-bottom:1.5rem; }
+    .article-body ul { margin-bottom:1.5rem; padding-left:1.5rem; }
+    .article-body ul li { margin-bottom:0.5rem; list-style:disc; }
+    .pull-quote { font-size:1.25rem; font-weight:600; color:#1A3C2B; line-height:1.5; letter-spacing:-0.01em; border-left:3px solid #52B788; padding-left:1.5rem; margin:2.5rem 0; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 right-0 z-50 bg-forest">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/index.html"><img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:36px;width:auto;"></a>
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="/services.html" class="nav-link">Our services</a></li>
+        <li><a href="/who-we-are.html" class="nav-link">Who we are</a></li>
+        <li><a href="/resources.html" class="nav-link">Resources</a></li>
+        <li><a href="/accountability.html" class="nav-link">Accountability</a></li>
+        <li><a href="#" class="nav-link flex items-center gap-1.5"><span style="color:#52B788;font-size:0.75rem;">⬡</span> ESGpro</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <a href="/get-in-touch.html" class="btn-primary hidden lg:inline-flex" style="padding:0.625rem 1.5rem;font-size:0.8125rem;">Get in touch</a>
+        <button class="lg:hidden p-2 rounded-lg text-cream hover:bg-white/10 transition-colors" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative grain overflow-hidden pt-32 pb-20 lg:pb-24" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 65% 80% at 20% 40%, rgba(82,183,136,0.08) 0%, transparent 60%);"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center gap-2 mb-6 fade-up">
+      <a href="/services.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Onze diensten</a>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="text-cream/50 text-sm">Analyse &amp; inzicht</span>
+    </div>
+    <div class="flex items-center gap-3 mb-5 fade-up">
+      <span class="tag" style="background:#52B788; color:#1A3C2B;">Analyse &amp; inzicht</span>
+    </div>
+    <h1 class="display-lg text-cream fade-up" style="max-width:780px;">Sociale Analyse</h1>
+    <p class="text-cream/60 mt-4 fade-up" style="max-width:560px; line-height:1.7; font-size:1.0625rem;">Breng de sociale impact van uw organisatie in kaart — van arbeidsomstandigheden tot ketentransparantie en gemeenschapsbetrokkenheid.</p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- LEFT: Service content -->
+      <div class="lg:col-span-7 article-body fade-up">
+        <img src="https://cdn.prod.website-files.com/69affc77dab7d623c0b7d359/69affd48aa5bb4ffa7dded6e_relume-825652.jpeg" alt="Sociale Analyse" class="w-full rounded-xl mb-8 shadow-green" style="aspect-ratio:16/9; object-fit:cover;" />
+
+        <h2>Wat is het?</h2>
+        <p>Een sociale analyse brengt de sociale impact van uw organisatie systematisch in kaart. Dat omvat een breed spectrum aan thema's: arbeidsomstandigheden en veiligheid, eerlijke beloning en beloningskloof, diversiteit en inclusie, opleiding en personeelsontwikkeling, gemeenschapsbetrokkenheid en de sociale dimensie van uw toeleveringsketen.</p>
+        <p>De S in ESG staat voor Social — en wordt in de praktijk nog te vaak gereduceerd tot een paragraaf over personeelsbeleid. Een grondige sociale analyse gaat verder: ze kijkt naar de rechten en het welzijn van iedereen die te maken heeft met uw organisatie, inclusief werknemers in uw leveranciersketen en de bredere gemeenschappen waarin u actief bent.</p>
+        <p>Wij werken op basis van internationaal erkende raamwerken zoals GRI (Global Reporting Initiative) en de ESRS-standaarden uit de CSRD-wetgeving, zodat uw analyse direct aansluit op uw rapportageverplichtingen of -ambities.</p>
+
+        <div class="pull-quote">"Duurzaamheid stopt niet bij CO₂. De sociale dimensie van uw organisatie is minstens even bepalend voor uw toekomst."</div>
+
+        <h2>Hoe werkt het?</h2>
+        <p>We volgen een gestructureerde aanpak die zowel kwantitatieve data als kwalitatieve inzichten combineert:</p>
+        <ul>
+          <li><strong>Identificatie van sociale thema's:</strong> Op basis van GRI-standaarden en ESRS-vereisten bepalen we welke sociale onderwerpen relevant zijn voor uw sector en organisatiegrootte.</li>
+          <li><strong>Bevraging medewerkers &amp; stakeholders:</strong> Via enquêtes en interviews verzamelen we inzichten over beleving, knelpunten en sterktes vanuit de werkvloer en het management.</li>
+          <li><strong>Analyse van data:</strong> We bekijken beloningskloof, verlooppercentages, diversiteitsratios, opleidingsbudgetten en arbeidsongevalcijfers.</li>
+          <li><strong>Sociale risico's in de keten:</strong> We screenen uw leveranciers op sociale risico's op basis van sector, herkomstland en beschikbare certificeringen.</li>
+          <li><strong>Rapportage &amp; actieplan:</strong> U ontvangt een helder rapport met bevindingen, prioriteiten en concrete verbeteracties.</li>
+        </ul>
+
+        <div class="my-10 rounded-2xl p-8 relative overflow-hidden" style="background:#1A3C2B;">
+          <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(82,183,136,0.08);"></div>
+          <p style="font-size:1.125rem;font-weight:500;color:#F5F0E8;line-height:1.7;position:relative;z-index:1;">"Bedrijven met een sterke sociale dimensie presteren beter op lange termijn — minder verloop, hogere betrokkenheid en meer vertrouwen van klanten en investeerders."</p>
+          <p style="margin-top:1rem;font-size:0.8125rem;color:#74C69D;font-weight:600;position:relative;z-index:1;">— The Ecological Entrepreneur</p>
+        </div>
+
+        <h2>Voor wie is dit?</h2>
+        <p>Een sociale analyse is waardevol voor organisaties die hun sociale verantwoordelijkheid serieus nemen of moeten aantonen. In het bijzonder voor:</p>
+        <ul>
+          <li>Bedrijven die CSRD of VSME willen implementeren en een onderbouwde sociale pijler nodig hebben.</li>
+          <li>HR-afdelingen die duurzaam personeelsbeleid willen verankeren en meetbaar willen maken.</li>
+          <li>Bedrijven die hun EcoVadis-score willen verbeteren op de sociale dimensie.</li>
+          <li>Organisaties die transparantie over hun toeleveringsketen willen vergroten naar klanten en investeerders.</li>
+        </ul>
+
+        <div class="my-10 rounded-2xl p-8 border border-leaf/30 bg-leaf/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <p style="font-weight:600;" class="text-forest text-base mb-1">Interesse in dit traject?</p>
+            <p class="text-sm text-gray-500">Plan een vrijblijvend gesprek en ontdek wat wij voor uw organisatie kunnen betekenen.</p>
+          </div>
+          <a href="/get-in-touch.html" class="btn-primary flex-shrink-0" style="padding:0.75rem 1.5rem;font-size:0.8125rem;">Neem contact op</a>
+        </div>
+
+        <h2>Veelgestelde vragen</h2>
+        <div class="border-t border-forest/10">
+          <details class="mb-1">
+            <summary>
+              <span class="text-sm">Wat valt er allemaal onder 'sociale analyse'?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">Een sociale analyse dekt een breed spectrum aan thema's die terug te vinden zijn in de GRI 400-serie en de ESRS S-standaarden: arbeidsomstandigheden en gezondheid, eerlijke beloning en beloningsgelijkheid, diversiteit en inclusie, training en opleiding, vrijheid van vakvereniging, kinderarbeid en dwangarbeid in de keten, gemeenschapsimpact en mensenrechtenbeleid. Welke thema's prioriteit krijgen, bepalen we samen op basis van uw sector, activiteiten en reeds beschikbare data.</div>
+          </details>
+          <details class="mb-1">
+            <summary>
+              <span class="text-sm">Hoe verschilt dit van een HR-audit?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">Een HR-audit focust typisch op de interne processen, compliance en organisatorische efficiëntie van de HR-functie. Een sociale analyse in ESG-context is breder: ze kijkt ook naar de impact op externe stakeholders, de bredere samenleving en de waardeketen. Bovendien is ze gericht op rapportage en communicatie naar buiten toe — richting investeerders, klanten en toezichthouders — wat bij een traditionele HR-audit zelden het geval is.</div>
+          </details>
+          <details class="mb-1">
+            <summary>
+              <span class="text-sm">Worden ook leveranciers in de analyse betrokken?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">Ja, afhankelijk van de scope van de analyse. We voeren een risicoscreening uit van uw leveranciersbestand op basis van sector en herkomstland, aangevuld met beschikbare duurzaamheidscertificering of vragenlijsten. Voor organisaties die dieper willen gaan, bieden we ook een uitgebreide leveranciersbevraging aan als apart traject.</div>
+          </details>
+          <details>
+            <summary>
+              <span class="text-sm">Hoe lang duurt een sociale analyse gemiddeld?</span>
+              <svg class="summary-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </summary>
+            <div class="details-body">Een sociale analyse neemt doorgaans 4 tot 8 weken in beslag, afhankelijk van de omvang van uw organisatie en de scope van de analyse. De medewerkersenquête en stakeholderinterviews zijn vaak de langste stap. Wij coördineren het volledige proces en zorgen voor een efficiënte doorlooptijd met minimale belasting voor uw team.</div>
+          </details>
+        </div>
+      </div>
+
+      <!-- RIGHT: Sticky Sidebar -->
+      <div class="lg:col-span-5">
+        <div class="sticky top-28 space-y-6">
+          <div class="rounded-2xl p-6 fade-up" style="background:#1A3C2B;">
+            <h3 class="text-base text-cream mb-2" style="font-weight:600;">Interesse in dit traject?</h3>
+            <p class="text-cream/60 text-sm mb-4" style="line-height:1.6;">Neem contact op voor meer informatie of een vrijblijvend gesprek.</p>
+            <a href="/get-in-touch.html" class="btn-outline w-full justify-center" style="font-size:0.8125rem;">Plan een gesprek</a>
+            <p class="text-center text-xs text-cream/40 mt-3">of stuur een mail naar <a href="mailto:contact@t-ee.eu" class="text-leaf/70 hover:text-leaf transition-colors">contact@t-ee.eu</a></p>
+          </div>
+
+          <div class="fade-up">
+            <h3 class="text-xs tracking-widest uppercase text-leaf mb-4" style="font-weight:600;letter-spacing:0.08em;">Gerelateerde diensten</h3>
+            <div class="space-y-2">
+              <a href="/services/co2.html" class="flex items-center justify-between p-4 rounded-xl border bg-white hover:border-forest/20 transition-colors" style="border-color:rgba(26,60,43,0.08); text-decoration:none;">
+                <span class="text-sm font-medium text-forest">CO₂ Analyse</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="/services/dma.html" class="flex items-center justify-between p-4 rounded-xl border bg-white hover:border-forest/20 transition-colors" style="border-color:rgba(26,60,43,0.08); text-decoration:none;">
+                <span class="text-sm font-medium text-forest">Double Materiality Assessment</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="/services/esg-strategie.html" class="flex items-center justify-between p-4 rounded-xl border bg-white hover:border-forest/20 transition-colors" style="border-color:rgba(26,60,43,0.08); text-decoration:none;">
+                <span class="text-sm font-medium text-forest">ESG Strategie</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#1A3C2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-xl p-6 fade-up" style="background:#EDE8DE;">
+            <h3 class="text-base text-forest mb-2" style="font-weight:600;">Blijf op de hoogte</h3>
+            <p class="text-sm mb-4" style="color:#6B7280; line-height:1.6;">Ontvang de laatste inzichten over duurzaamheid in uw inbox.</p>
+            <div class="flex flex-col gap-2">
+              <input type="email" placeholder="E-mailadres" class="form-input" />
+              <button class="btn-primary w-full justify-center">Inschrijven</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="relative py-24 lg:py-32 grain overflow-hidden" style="background:#1A3C2B;">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-8 text-center fade-up">
+    <p class="text-leaf text-sm font-medium tracking-widest uppercase mb-4">Samenwerken</p>
+    <h2 class="display-md text-cream mb-6">Let's bring ecology and economy together!</h2>
+    <p class="text-cream/70 text-lg mb-10" style="line-height:1.7;">We zijn er om te helpen. Neem contact op als u meer informatie nodig heeft of klaar bent om te starten.</p>
+    <a href="/get-in-touch.html" class="btn-outline">Get in touch</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-20 lg:py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="rounded-2xl p-8 lg:p-12 fade-up" style="background:#EDE8DE; border:1px solid rgba(26,60,43,0.1);">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-sage text-sm font-medium tracking-widest uppercase mb-3">Op de hoogte blijven</p>
+          <h2 class="display-md text-forest mb-3">Schrijf u in voor onze nieuwsbrief</h2>
+          <p class="text-gray-500 text-sm" style="line-height:1.65;">Ontvang de laatste inzichten over duurzaamheid, ecologie en verantwoord ondernemen.</p>
+        </div>
+        <form class="grid sm:grid-cols-2 gap-3">
+          <input type="text" placeholder="Voornaam" class="form-input" />
+          <input type="text" placeholder="Achternaam" class="form-input" />
+          <input type="text" placeholder="Bedrijfsnaam" class="form-input" />
+          <input type="email" placeholder="E-mailadres" class="form-input" />
+          <div class="sm:col-span-2"><button type="submit" class="btn-primary w-full justify-center">Versturen</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#122A1E;" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+      <div class="lg:col-span-1">
+        <div class="mb-5"><img src="/brand_assets/1_LOGO/SVG/TEE_logo_white.svg" alt="The Ecological Entrepreneur" style="height:40px;width:auto;"></div>
+        <p class="text-cream/50 text-sm" style="line-height:1.7;">Making sustainability self-evident by bringing ecology and economy together.</p>
+      </div>
+      <div>
+        <h4 class="text-cream/90 text-xs font-semibold tracking-widest uppercase mb-5">Menu</h4>
+        <ul class="space-y-3">
+          <li><a href="/services.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Our services</a></li>
+          <li><a href="/who-we-are.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Who we are</a></li>
+          <li><a href="/resources.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Resource center</a></li>
+          <li><a href="/accountability.html" class="text-cream/50 text-sm hover:text-cream transition-colors">Accountability</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 text-xs font-semibold tracking-widest uppercase mb-5">Contact</h4>
+        <ul class="space-y-3">
+          <li><a href="mailto:contact@t-ee.eu" class="text-cream/50 text-sm hover:text-cream transition-colors">contact@t-ee.eu</a></li>
+          <li><span class="text-cream/50 text-sm">Koningin Elisabethlei 16,<br/>2018 Antwerp</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-cream/90 text-xs font-semibold tracking-widest uppercase mb-5">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Terms &amp; Conditions</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="text-cream/50 text-sm hover:text-cream transition-colors">Whistleblowing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4" style="border-top:1px solid rgba(255,255,255,0.08);">
+      <p class="text-cream/30 text-xs">© 2026 The Ecological Entrepreneur. All rights reserved.</p>
+      <p class="text-cream/30 text-xs">Making sustainability self-evident.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
